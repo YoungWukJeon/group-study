@@ -42,7 +42,8 @@ public class Category{
 ```java
 /** 
  * @param categoryEntityList: DB 에서 가져온 모든 카테고리 리스트 
- *   - 1 depth, 2 depth 가 1차원 배열로 구성됨 
+ *   - 1 depth, 2 depth 가 1차원 배열로 구성됨
+ * @return  
  */
 public List<Category> convertCategoryList(List<CategoryEntity> categoryEntityList){
     // stream 으로 변환하면 됨 ㅎ 
@@ -67,34 +68,11 @@ ex) 수정하는 것의 예
 입력은 기존에 화면에 출력된 카테고리 tree view 임
 ㄴ List<Category>
 ```java
-public void updateCategoryListTree(List<Category> categoryList){
-    // DB 에서 조회한 카테고리라고 가정 
-    List<CategoryEntity> dbCategoryList = new ArrayList<CategoryEntity>(){
-        {
-            add(new CategoryEntity(){
-                {
-                    setNo(1L);
-                    setParentNo(null);
-                    setName("서울");
-                }
-            });
-            add(new CategoryEntity(){
-                {
-                    setNo(2L);
-                    setParentNo(null);
-                    setName("경기도");
-                }
-            });
-            add(new CategoryEntity(){
-                {
-                    setNo(3L);
-                    setParentNo(1L);
-                    setName("강남구");
-                }
-            });
-            // ... 중략 
-        }
-    };
+/**
+ * @param categoryList : 화면에서 입력받은 데이터 (등록, 수정, 삭제)
+ * @param dbCategoryList : DB 에서 조회한 카테고리 
+ */
+public void updateCategoryListTree(List<Category> categoryList, List<CategoryEntity> dbCategoryList){
     
     // 내부 entity 들로 변환한다 
     List<CategoryEntity> categoryEntityList = convertToCategoryEntityList(categoryList);
