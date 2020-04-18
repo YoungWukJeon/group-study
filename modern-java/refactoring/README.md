@@ -346,7 +346,7 @@ public List<String> getCategoryNameListByParentNoStream(long parentNo){
 책에서는 해당 메소드의 결과와 예상된 결과를 비교해서 검증을 수행하고 있음 
 ㄴ 마틴 파울러는 단위 테스트에 검증에 대해서 크게 2가지로 분리하였는데, **상태 검증과 행위 검증** 이다   
 ㄴ 상태 검증: 메서드를 호출한 결과물에 대한 데이터에 대한 테스트로 볼 수 있음   
-ㄴ 행위 검증: 특정 메서드가 호출이 되었었는지를 검증하는 것
+ㄴ 행위 검증: 특정 메서드가 호출이 되었었는지를 검증하는 것  
 ㄴ [my 블로그](https://kimkoungho.github.io/testing/test-double/#mock-vs-stub)
 
 ### 고차원 함수 테스트 
@@ -371,7 +371,7 @@ public void stackTrace(){
             .forEach(System.out::println);
 }
 ```
-[!noImage](stacktace.png)   
+[!noImage](stacktrace.png)   
 - 의도하지 않았던 복잡한 스택 트레이스가 생성됨 
 - 실제 에러가 생성된 람다에 대한 메서드명이 나타나지 않음 
 > 
