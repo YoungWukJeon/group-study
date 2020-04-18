@@ -371,7 +371,9 @@ public void stackTrace(){
             .forEach(System.out::println);
 }
 ```
-[!noImage](stacktrace.png)   
+
+![No Image](stacktrace.png)   
+
 - 의도하지 않았던 복잡한 스택 트레이스가 생성됨 
 - 실제 에러가 생성된 람다에 대한 메서드명이 나타나지 않음 
 > 
