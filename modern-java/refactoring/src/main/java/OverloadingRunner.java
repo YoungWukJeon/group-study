@@ -9,4 +9,8 @@ public class OverloadingRunner {
     public void run(Runnable runnable){
         runnable.run();
     }
+
+    public void run(Execute runnable){
+        runnable.run();
+    }
 }

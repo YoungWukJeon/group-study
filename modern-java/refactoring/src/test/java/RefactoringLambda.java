@@ -3,6 +3,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 import java.util.function.IntBinaryOperator;
 
@@ -52,12 +53,15 @@ public class RefactoringLambda {
         };
         runnable.run();
 
+        AtomicInteger integer  = new AtomicInteger(a);
+        Integer b = 3;
         // 컴파일 에러
-//        Runnable lambda = () -> {
+        Runnable lambda = () -> {
 //            int a = 3;
-//            System.out.println(a);
-//        };
-//        lambda.run();
+            integer.getAndSet(5);
+            System.out.println(integer);
+        };
+        lambda.run();
     }
 
     @Test
@@ -70,9 +74,16 @@ public class RefactoringLambda {
                 System.out.println(o.toString());
             }
         });
+        overloadingRunner.run(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
 
         // 명시적 타입 캐스팅이 필요
-        overloadingRunner.run((Consumer) (s) -> System.out.println(s.toString()));
+//        overloadingRunner.run((s) -> System.out.println(s.toString()));
+        overloadingRunner.run((Runnable)() -> System.out.println("call"));
     }
 
     @Test

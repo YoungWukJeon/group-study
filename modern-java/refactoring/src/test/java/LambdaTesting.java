@@ -11,7 +11,9 @@ public class LambdaTesting {
     public void stackTrace(){
         List<Category> categoryList = Arrays.asList(new Category(1L, null, "서울"), null);
         categoryList.stream()
-                .map(Category::getName)
+                .map(category -> {
+                    return category.getName();
+                })
                 .forEach(System.out::println);
     }
 
@@ -27,15 +29,19 @@ public class LambdaTesting {
                 new Category(7L, 2L, "성남시")
         );
 
+        for(Category category : categoryList){
+
+        }
+
         long parentNo = 2L;
         List<String> result = categoryList.stream()
-                .peek(category -> System.out.println(category))
+//                .peek(category -> System.out.println(category))
                 .filter(category -> category.getParentNo() != null)
-                .peek(category -> System.out.println(category))
+//                .peek(category -> System.out.println(category))
                 .filter(category -> parentNo == category.getParentNo())
-                .peek(category -> System.out.println(category))
+//                .peek(category -> System.out.println(category))
                 .map(Category::getName)
-                .peek(categoryName -> System.out.println(categoryName))
+//                .peek(categoryName -> System.out.println(categoryName))
                 .collect(Collectors.toList());
 
     }
