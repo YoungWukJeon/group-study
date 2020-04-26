@@ -175,3 +175,92 @@ Stream을 통해 데이터 리스트를 조작하는 DSL형식 구현
 ## 10.2.2 데이터를 수집하는 DSL인 Collectors
 Collector 인터페이스는 데이터 수집을 수행하는 DSL라고 할 수 있음
 
+# 10.3 자바로 DSL을 만드는 패턴과 기법
+DSL은 특정 도메인 모델에 적용할 친화적이고 가독성 높은 API 제공
+
+기존의 구현 방식
+
+```
+Order order = new Order();
+order.setCustomer("BigBank");
+
+Trade trade1 = new Trade();
+trade1.setType(Trade.Type.BUY);
+
+Stock stock1 = new Stock();
+stock1.setSymbol("IBM");
+stock1.setMarket("NYSE");
+
+trade1.setStock(stock1);
+trade1.setPrice(125.00);
+trade1.setQuantity(80);
+order.addTrade(trade1);
+
+Trade trade2 = new Trade();
+trade2.setType(Trade.Type.BUY);
+
+Stock stock2 = new Stock();
+stock2.setSymbol("GOOGLE");
+stock2.setMarket("NASDAQ");
+
+trade2.setStock(stock2);
+trade2.setPrice(375.00);
+trade2.setQuantity(50);
+order.addTrade(trade2);
+```
+
+## 10.3.1 메서드 체인
+```
+Order order = forCustomer("BigBank")
+                .buy(80)
+                .stock("IBM")
+                .on("NYSE")
+                .at(125.00)
+                .sell(50)
+                .stock("GOOGLE")
+                .on("NASDAQ")
+                .at(375.00)
+                .end();
+```
+
+## 10.3.2 중첩된 함수 사용
+```
+Order order = order("BigBank", buy(80,  stock("IBM", on("NYSE")), at(125.00)),
+                sell(50, stock("GOOGLE", on("NASDAQ")), at(375.00))
+```
+
+## 10.3.3 람다 표현식을 이용한 함수 시퀀싱
+```
+Order order = order ( o -> {
+            o.forCustomer("BigBank");
+            o.buy(t -> {
+                t.quantity(80);
+                t.price(125.00);
+                t.stock( s -> {
+                    s.symbol("IBM");
+                    s.market("NYSE");
+                });
+            });
+            o.sell (t -> {
+                t.quantity(50);
+                t.price(375.00);
+                t.stock(s -> {
+                    s.symbol("GOOGLE");
+                    s.market("NASDAQ");
+                });
+            });
+        });
+```
+
+## 10.3.4 조합하기
+```
+Order order = forCustomer("BigBank", buy(t -> t.quantity(80)
+                                            .stock("IBM")
+                                            .on("NYSE")
+                                            .at(125.00)),
+                                        sell( t -> t.quantity(50)
+                                            .stock("GOOGLE")
+                                            .on("NASDAQ")
+                                            .at(125.00)));
+```
+
