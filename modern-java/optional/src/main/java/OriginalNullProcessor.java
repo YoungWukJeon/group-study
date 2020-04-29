@@ -1,68 +1,43 @@
-import model.Account;
-import model.Posts;
-
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
+import model.Car;
+import model.Insurance;
+import model.Person;
 
 public class OriginalNullProcessor {
-    public List<String> findTitleByAccount(List<Posts> posts, Account account) {
-        return posts.stream()
-                .filter(p -> p.getAccount().getUid().equals(account.getUid()))
-                .map(Posts::getTitle)
-                .collect(Collectors.toList());
+    public String getCarInsuranceName(Person person) {
+        return person.getCar().getInsurance().getName();
     }
 
-    public List<String> findTitleByAccountAvoidNull(List<Posts> posts, Account account) {
-        return posts.stream()
-                .filter(p -> {
-                    if (p.getAccount() != null) {
-                        Account pAccount = p.getAccount();
-                        if (pAccount.getUid() != null) {
-                            Long uid = pAccount.getUid();
-                            if (account != null && account.getUid() != null) {
-                                return uid.equals(account.getUid());
-                            }
-                            return false;
-                        }
-                        return false;
-                    }
-                    return false;
-                })
-                .map(Posts::getTitle)
-                .collect(Collectors.toList());
+    public String getCarInsuranceNameUsingNullProcessing(Person person) {
+        if (person.getCar() != null) {
+            Car car = person.getCar();
+            if (car.getInsurance() != null) {
+                Insurance insurance = car.getInsurance();
+                return insurance.getName();
+            }
+        }
+        return "Unknown";
     }
 
-    public List<String> findTitleByAccountAvoidNullUsingManyExit(List<Posts> posts, Account account) {
-        return posts.stream()
-                .filter(p -> {
-                    if (p.getAccount() == null) {
-                        return false;
-                    }
-                    Account pAccount = p.getAccount();
-                    if (pAccount.getUid() == null) {
-                        return false;
-                    }
-                    Long uid = pAccount.getUid();
-                    if (account == null || account.getUid() == null) {
-                        return false;
-                    }
-                    return uid.equals(account.getUid());
-                })
-                .map(Posts::getTitle)
-                .collect(Collectors.toList());
+    public String getCarInsuranceNameUsingNullProcessingWithManyExit(Person person) {
+        if (person == null) {
+            return "Unknown";
+        }
+        Car car = person.getCar();
+        if (car == null) {
+            return "Unknown";
+        }
+        Insurance insurance = car.getInsurance();
+        if (insurance == null) {
+            return "Unknown";
+        }
+        return insurance.getName();
     }
 
     public static void main(String[] args) {
         OriginalNullProcessor main = new OriginalNullProcessor();
+        Person person = new Person();
+        person.setCar(new Car());
 
-        Account account = Account.builder().uid(1L).name("hong").build();
-        List<Posts> posts = List.of(
-                Posts.builder().account(account).title("title1").createAt(LocalDateTime.now()).build(),
-                Posts.builder().title("title2").createAt(LocalDateTime.now()).build(),
-                Posts.builder().account(account).title("title3").createAt(LocalDateTime.now()).build()
-        );
-        List<String> titles = main.findTitleByAccountAvoidNullUsingManyExit(posts, account);
-        System.out.println(titles);
+        System.out.println(main.getCarInsuranceNameUsingNullProcessing(person));
     }
 }

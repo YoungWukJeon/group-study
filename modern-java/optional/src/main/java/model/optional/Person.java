@@ -2,13 +2,13 @@ package model.optional;
 
 import lombok.*;
 
-@Setter
+import java.util.Optional;
+
 @Getter
-@ToString
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Account {
-    private Long uid;
-    private String name;
+public class Person {
+    private Optional<Car> car;
 }

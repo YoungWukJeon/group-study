@@ -1,14 +1,12 @@
-package model;
+package model.optional;
 
 import lombok.*;
 
-@Setter
 @Getter
-@ToString
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Account {
-    private Long uid;
+public class Insurance {
     private String name;
 }
