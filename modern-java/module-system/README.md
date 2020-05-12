@@ -196,6 +196,7 @@
     - requires는 의존하고 있는 모듈을 지정한다.
     - 기본적으로 모든 모듈은 java.base라는 플랫폼 모듈을 의존하는데 이 플랫폼 모듈은 net, io, util 등의 Java 메인 패키지를 포함한다.
         - 항상 기본적으로 필요한 모듈이므로 java.base는 명시적으로 정의할 필요가 없다.
+
         | 클래스 가시성 | Java9 이전 | Java9 이후 |
         | --- | --- | --- |
         | `모든 클래스가 모두에 공개됨` | O O | O O (exports와 requires 구문 혼합) |
@@ -367,14 +368,14 @@
 
 ```bash
 jar --file=./expenses.reader/target/dependency/httpclient-4.5.3.jar \
-	--describe-module httpclient@4.5.3 automatic
+    --describe-module httpclient@4.5.3 automatic
 ```
 
 - 마지막으로 httpclient JAR를 모듈 경로에 추가한 다음 애플리케이션을 실행한다.
 
 ```bash
 java --module-path \
-	./expenses.application/target/expenses.application-1.0.jar:\
+    ./expenses.application/target/expenses.application-1.0.jar:\
 	./expenses.readers/target/expenses.readers-1.0.jar \
 	./expenses.readers/target/dependency/httpclient-4.5.3.jar \
 	--module \
