@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'com.edu'
+group 'edu.study'
 version '1.0-SNAPSHOT'
 
 repositories {
