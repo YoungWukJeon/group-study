@@ -9,7 +9,7 @@ ex) SQL, HTML
 그러나 lambda가 추가되며 변화하는 추새
 
 "메뉴에서 400 칼로리 이하의 모든 요리를 찾으시오" 같은 쿼리를 프로그램으로 구현하면 아래와 같다.
-```
+```java
 while (block != null) {
     read(block, buffer)
     for (every record in buffer) {
@@ -21,7 +21,7 @@ while (block != null) {
 ```
 위의 Java 코드를 SQL로 변경하면 아래와 같다
 
-```
+```sql
 SELECT name FROM menu WHERE calorie < 400;
 ```
 
@@ -30,7 +30,7 @@ SELECT name FROM menu WHERE calorie < 400;
 - 애플리케이션 수준이 아니라 시스템 수준의 개념을 다루어야 함
 
 Stream을 이용하면 아래와 같이 간결하게 변경할 수 있음
-```
+```java
 menu.stream().filter(d -> d.getCalories() < 400)
     .map(Dish::getName)
     .forEach(System.out::println)
@@ -78,7 +78,7 @@ DSL을 잘 활용하면 특정 도메인의 복잡성을 더 잘 다룰 수 있�
 ### 내부 DSL(임베디드 DSL)
 순수 자바 코드 같은 기존 호스팅 언어를 기반으로 구현  
 기존의 Java(version ~7)는 유연성이 떨어지는 문법 때문에 DSL의 성격과는 맞지 않았지만 lambda가 도입되며 이러한 문제들이 해결되어 어느정도의 DSL을 만들 수 있게 변경
-```
+```java
 # java7
 List<String> numbers = Arrays.asList("one", "two", "three");
 numberrs.forEach( new Consumer<String>() {
@@ -89,7 +89,7 @@ numberrs.forEach( new Consumer<String>() {
 });
 ```
 
-```
+```java
 # java8
 numbers.forEach(s -> System.out.println(s));
 numbers.forEach(System.out::println);
@@ -106,15 +106,13 @@ Java로 DSL을 구현하는 경우 아래와 같은 장점을 얻을 수 있다
 스칼라나 그루비처럼 Java가 아니지만 JVM에서 실행되며 더 유연하고 표현력이 강한 언어를 이용해 DSL을 만든 것  
 아래의 코드는 scala를 이용해 DSL형식을 구현한 예
 
-```
+```scala
 # scala
 def times(i: Int)(f: => Unit): Unit = { 
     f
     if ( i > 1 ) times(i - 1)(f)
 }
-```
 
-```
 times(3) {
     println("Hello World")
 }
@@ -136,7 +134,7 @@ Java의 새로운 기능의 장점을 적용한 첫 API는 네이티브 Java 자
 ## 10.2.1 스트림 API는 컬렉션을 조작하는 DSL
 Stream은 컬렉션 항목을 필터, 정렬, 변환, 그룹화, 조작할 수 있어 작은 DSL로 볼 수 있음  
 로그 파일을 읽어 "ERROR"라는 단어로 시작하는 파일의 첫 40행을 수집하는 작업을 아래와 같은 코드로 작성
-```
+```java
 # Java7
 List<String> errors = new ArrayList<>();
 int errorCount = 0;
@@ -163,7 +161,7 @@ while (errorCount < 40 && line != null) {
 - "Error"을 로그에서 발견하면 카운터를 증가시키는 행
 
 Stream Interface를 이용하여 아래와 같이 변경
-```
+```java
 List<String> errors = Files.lines(Paths.get(fileName))
                            .filter(line -> line.startsWith("ERROR"))
                            .limit(40)
@@ -180,7 +178,7 @@ DSL은 특정 도메인 모델에 적용할 친화적이고 가독성 높은 API
 
 기존의 구현 방식
 
-```
+```java
 Order order = new Order();
 order.setCustomer("BigBank");
 
@@ -210,7 +208,7 @@ order.addTrade(trade2);
 ```
 
 ## 10.3.1 메서드 체인
-```
+```java
 Order order = forCustomer("BigBank")
                 .buy(80)
                 .stock("IBM")
@@ -224,13 +222,13 @@ Order order = forCustomer("BigBank")
 ```
 
 ## 10.3.2 중첩된 함수 사용
-```
+```java
 Order order = order("BigBank", buy(80,  stock("IBM", on("NYSE")), at(125.00)),
                 sell(50, stock("GOOGLE", on("NASDAQ")), at(375.00))
 ```
 
 ## 10.3.3 람다 표현식을 이용한 함수 시퀀싱
-```
+```java
 Order order = order ( o -> {
             o.forCustomer("BigBank");
             o.buy(t -> {
@@ -253,7 +251,7 @@ Order order = order ( o -> {
 ```
 
 ## 10.3.4 조합하기
-```
+```java
 Order order = forCustomer("BigBank", buy(t -> t.quantity(80)
                                             .stock("IBM")
                                             .on("NYSE")
@@ -294,14 +292,14 @@ Java에서 제공하는 기본적인 것으로 sql 형식과 같이 사용하게
 SQL코드와 jOOQ 코드를 비교해서 살펴보자
 
 SQL코드
-```
+```sql
 SELECT * FROM BOOK
 WHERE BOOK.PUBLISHED_IN = 2016
 ORDER BY BOOK, TITLE
 ```
 
 jOOQ Java 코드
-```
+```java
 create.selectFrom(BOOK)
       .where BOOK.PUBLISHED_IN.eq(2016))
       .orderBy(BOOK, TITLE)
