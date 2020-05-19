@@ -81,8 +81,4 @@ public class Main {
                 .map(CompletableFuture::join)
                 .collect(Collectors.toList());
     }
-
-    static void doSomethingElse() {
-        System.out.println("다른 일");
-    }
 }

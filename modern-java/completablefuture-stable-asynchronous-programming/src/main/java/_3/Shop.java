@@ -3,8 +3,6 @@ package _3;
 import lombok.Getter;
 
 import java.util.Random;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Future;
 
 @Getter
 public class Shop {
@@ -16,35 +14,6 @@ public class Shop {
 
     public double getPrice(String product) {
         return calculatePrice(product);
-    }
-
-    public Future<Double> getPriceAsync(String product) {
-        CompletableFuture<Double> futurePrice = new CompletableFuture<> ();
-        new Thread(() -> {
-            double price = calculatePrice(product);
-            futurePrice.complete(price);
-        }).start();
-        return futurePrice;
-    }
-
-    public Future<Double> getPriceAsyncUsingSupplyAsync(String product) {
-        return CompletableFuture.supplyAsync(() -> calculatePrice(product));
-    }
-
-    public Future<Double> getPriceAsyncWithException(String product) {
-        CompletableFuture<Double> futurePrice = new CompletableFuture<> ();
-        new Thread(() -> {
-            try {
-                double price = calculatePrice(product);
-                if (product.contains("product")) {
-                    throw new RuntimeException("product not available");
-                }
-                futurePrice.complete(price);
-            } catch (Exception ex) {
-                futurePrice.completeExceptionally(ex);
-            }
-        }).start();
-        return futurePrice;
     }
 
     private double calculatePrice(String product) {
