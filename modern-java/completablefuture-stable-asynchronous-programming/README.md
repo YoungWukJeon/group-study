@@ -35,7 +35,7 @@ try {
 - get 메서드를 오버로드해서 우리 스레드가 대기할 최대 타임아웃 시간을 설정하는 것이 좋다.
 - Future의 제한
     - 여러 Future의 결과가 있을 때 이들의 의존성을 표현하기가 어렵다.
-        - ex) 오래 걸리는 A라는 계산이 끝나면 그 결과를 다른 오래 걸리는 계산 B로 전달하고 B의 결과가 나오면 다른 질으의 결과와 B의 결과를 조합하시오.
+        - ex) 오래 걸리는 A라는 계산이 끝나면 그 결과를 다른 오래 걸리는 계산 B로 전달하고 B의 결과가 나오면 다른 질의의 결과와 B의 결과를 조합하시오.
     - Future에서 필요한 선언형 기능
         - 두 개의 비동기 계산 결과를 하나로 합친다. 두 가지 계산 결과는 서로 독립적일 수 있으며 또는 두 번째 결과가 첫 번째 결과에 의존하는 상황일 수 있다.
         - Future 집합이 실행하는 모든 태스크의 완료를 기다린다.
@@ -99,7 +99,7 @@ try {
         	CompletableFuture<Double> futurePrice = new CompletableFuture<> ();
         	new Thread(() -> {
         		double price = calculatePrice(product); // 다른 스레드에서 비동기적으로 계산을 수행
-        		futurePrice.complete(price); // 오랜 시간이 걸리는 계산이 완룓뢰면 Future에 값을 설정
+        		futurePrice.complete(price); // 오랜 시간이 걸리는 계산이 완료되면 Future에 값을 설정
         	}).start();
         	return futurePrice; // 계산 결과가 완료되길 기다리지 않고 Future를 반환
         }
@@ -563,7 +563,7 @@ private double calculatePrice(String product) {
 - 타임아웃 효과적으로 사용하기
     - 앞에서 설명한 것처럼 Future의 계산 결과를 읽을 때는 무한정 기다리는 상황이 발생할 수 있으므로 블록하지 않는 것이 좋다.
     - Java9에서는 CompletableFuture에서 제공하는 몇 가지 기능을 이용해 이런 문제를 해결할 수 있었다.
-    - orTimeout 메서드는 지정된 시간이 지난 후에 CompletableFuture를 TimeoutException으로 완료하면서 또 다른 ComletableFuture를 반환할 수 있도록 내부적으로 ScheduledThreadExecutor를 활용한다.
+    - orTimeout 메서드는 지정된 시간이 지난 후에 CompletableFuture를 TimeoutException으로 완료하면서 또 다른 CompletableFuture를 반환할 수 있도록 내부적으로 ScheduledThreadExecutor를 활용한다.
     - 이 메서드를 이용하면 계산 파이프라인을 연결하고 여기서 TimeoutException이 발생했을 때 사용자가 쉽게 이해할 수 있는 메시지를 제공할 수 있다.
 
     ```java
@@ -577,7 +577,7 @@ private double calculatePrice(String product) {
     ```
 
     - 일시적으로 서비스를 이용할 수 없는 상황에서는 꼭 서버에서 얻은 값이 아닌 미리 지정된 값을 사용할 수 있는 상황도 있다.
-    - orTimeout rTimeout 메서드처럼 completeOnTimeout 메서드는 CompletableFuture를 반환하므로 이 결과를 다른 CompletableFuture 메서드와 연결할 수 있다.
+    - orTimeout 메서드처럼 completeOnTimeout 메서드는 CompletableFuture를 반환하므로 이 결과를 다른 CompletableFuture 메서드와 연결할 수 있다.
 
         ```java
         Future<Double> futurePriceInUSD = CompletableFuture.supplyAsync(
