@@ -98,9 +98,9 @@ public class TrainJourney {
 }
 ```
 
-먼저 X -> Y 를 표현하는 firstTrainJourney 와 Y -> Z secondTrainJourney 가 있다고 가정해보자   
-그리고 X -> Y -> Z 순으로 기차여행을 표현하려고 한다    
-그렇다면 X -> Y 를 표현하는 first 와 Y -> Z 를 표현하는 second 를 연결하여 X -> Y -> Z 를 나타내는 TrainJourney 를 만들어보자    
+1. 먼저 X -> Y 를 표현하는 firstTrainJourney 와 Y -> Z secondTrainJourney 가 있다고 가정해보자   
+2. 그리고 X -> Y -> Z 순으로 기차여행을 표현하려고 한다    
+3. 그렇다면 X -> Y 를 표현하는 first 와 Y -> Z 를 표현하는 second 를 연결하여 X -> Y -> Z 를 나타내는 TrainJourney 를 만들어보자    
    
 ```java
 /** start 부터 시작해서 마지막에 end 를 추가 */
@@ -137,13 +137,13 @@ static void printTrainJourney(TrainJourney start){
 }
 ``` 
 - link 라는 메소드에서 2개의 TrainJourney 를 이용하여 연결하는 작업을 구현해보았다   
-ㄴ 실제로 출력해보면 10, 20, 20, 30 (X -> Y -> Y -> Z) 가 출력됨
+ㄴ 실제로 출력해보면 10, 20, 20, 30 (X -> Y -> Y -> Z) 가 출력됨   
 ㄴ 이게 원하는게 맞는지 의문이 들긴 함 .. 
   
 - 어쨋든 책에서 얘기하는 것은 link 라는 메소드는 firstTrainJourney 의 정보를 바꾼다는 점이다  
 - firstTrainJourney 는 X -> Y 를 표현하고 있었는데, link 메소드를 호출한 뒤에는 X -> Y -> Y -> Z 를 표현하게 됨  
 ㄴ 이런 문제는 기존에 firstTrainJourney 참조하고 있던 다른 객체들에게 영향을 주게됨 (side effects)  
-- 따라서 기존 자료구조를 갱신하지 않고 새로운 자료구조를 생성하도록 변경이 필요함
+- 따라서 기존 자료구조를 갱신하지 않고 새로운 자료구조를 생성하도록 변경이 필요함  
 ㄴ 이는 객체지향 프로그래밍 관점에서도 좋은 기법  
   
 새로운 자료구조를 생성하는 메소드 구현   
@@ -172,7 +172,7 @@ static void appendTest(){
 - append 메소드는 매번 객체를 생성하면서 재귀적으로 TrainJourney 를 연결한다 
 - 기존에 있었던 firstTrainJourney 정보가 변하지 않음 
 - 대신, 단일 연결리스트를 아예 새로 생성하는 것이기 때문에 객체를 생성하는 비용이 좀 더 든다 
-- 단일 연결리스트 전체를 새로 생성하는 것이 아니라 firstTrainJourney 의 onward 가 secondTrainJourney 를 가리키는 새로운 단일 연결리스트를 생성한다
+- 단일 연결리스트 전체를 새로 생성하는 것이 아니라 firstTrainJourney 의 onward 가 secondTrainJourney 를 가리키는 새로운 단일 연결리스트를 생성한다   
 ㄴ firstTrainJourney 부분만 새로 생성했기 때문에 firstTrainJourney 의 price 가 변경되어도 result 의 price 는 변경되지 않음 
   
   
@@ -301,7 +301,7 @@ private static void functionalUpdateTest(){
 ```
 - update 의 결과는 tree, newTree 모두 50이 출력됨
 - functionalUpdate 의 결과는 tree 는 20, newTree 는 50이 출력 
-- functionalUpdate 는 기존 구조를 변화시키지 않기 때문에 A 사용자의 트리와 B 사용자의 갱신된 트리는 공유 데이터는 공유하고 서로에게 영향을 주지 않을 수 있음 
+- functionalUpdate 는 기존 구조를 변화시키지 않기 때문에 A 사용자의 트리와 B 사용자의 갱신된 트리는 공유 데이터는 공유하고 서로에게 영향을 주지 않을 수 있음  
 ㄴ 하지만, 알다시피 객체를 복사해서 사용하기 때문에 A와 B가 같은 값을 수정했다면, A 가 바라보는 트리와 B 가 바라보튼 트리 간의 데이터의 차이가 발생함   
 
 ## 스트림과 게으른 평가
@@ -314,7 +314,7 @@ private static void functionalUpdateTest(){
 2. 스트림에서 첫 번째수(스트림의 머리)를 가져옴 (이 숫자는 소수)
 3. 이제 스트림의 마지막 수(꼬리)로 나누어 떨어지는 모든수를 제외 
 4. 이렇게 남은 숫자만 포함하는 새로운 스트림에서 소수를 찾음 
-5. 1-4 의 과정을 반복한다 (따라서 이 알고리즘은 재귀)
+5. 1-4 의 과정을 반복한다 (따라서 이 알고리즘은 재귀)  
 ㄴ 이 알고리즘은 단순히 스트림이 어떻게 동작하는지 보여주기 위해서 사용하는 것  
 
 ```java
@@ -474,7 +474,7 @@ static void lazyPrimesTest(){
 ```
 - 실제로 테스트를 돌려보면 소수가 무한히 찍히는 것을 확인할 수 있다 
 
-### 게으른 스트림, 리스트의 장단점 ㅇ
+### 게으른 스트림, 리스트의 장단점 
 자료구조의 10퍼센트 미만의 데이터만 활용되는 경우에는 게으른 실행이 일반 구현보다 성능이 떨어진다  
 ㄴ 게으른 실행을 수행하기 위한 오버헤드가 더 크기 때문  
 위에서 구현한 소수 구하기 경우에 LazyLinkedList 값을 탐색하면서 10번째 항목까지는 모든 노드를 2번씩 생성하게 된다
@@ -482,12 +482,12 @@ static void lazyPrimesTest(){
 디버깅을 통해서 살펴보자   
 - from(2) 를 통해서 2로 시작하는 연결리스트 생성 
 - numbers 는 head 가 2, tail 3  
-[!No Image](images/lazy_debug_1.png)  
+![Image](images/lazy_debug_1.png)  
 - numbers 는 head 가 3, tail 5  
-[!No Image](images/lazy_debug_2.png)   
-[!No Image](images/lazy_debug_3.png)   
-[!No Image](images/lazy_debug_4.png)   
-[!No Image](images/lazy_debug_5.png)  
+![Image](images/lazy_debug_2.png)   
+![Image](images/lazy_debug_3.png)   
+![Image](images/lazy_debug_4.png)   
+![Image](images/lazy_debug_5.png)  
 ㄴ 값을 탐색하기 위해서 Supplier 가 반복 호출되기 때문에 발생하는 현상인데 이러한 문제점을 결과를 캐시 하도록 해서 해결할 수 있음  
 ㄴ private Optional<LazyLinkedList<T>> alreadyComputed 필드를 추가해서 tail 메서드가 적절하게 리스트를 업데이트 하도록 할 수 있다  
 ㄴ 실제로 하스켈 같은 언어에서는 자신의 자료구조를 적당히 정리한다  
@@ -530,8 +530,8 @@ public static Expr simplifyExpr(Expr expr){
 즉, 로직과 구조를 분리하는 패턴으로 로직과 구조를 분리함으로써 구조를 수정하지 않고도 새로운 동작을 기존 객체 구조에 추가할 수 있음   
 이는 Open-Closed Principle 을 따르는 한가지 방법임  
   
-**클래스 다이어그램**
-[!No Image](Visitor_design_pattern.svg.png)  
+**클래스 다이어그램**  
+![Image](images/Visitor_design_pattern.svg.png)  
 - Visitor : 실제 ConcreteElement 들에 대한 처리에 대해 기술
     * 실제 로직이 포함되어 있지는 않음 
     * 필요한 메소드를 단순히 나열하는 것 
@@ -646,9 +646,50 @@ Integer computeNumberOfUsingCache(Range range){
 ```
 computeNumberOfUsingCache 메소드는 computeNumberOfNodes 가 참조 투명성이 있다는 가정하에 참조 투명성을 갖는다고 할 수 있음   
 하지만 HashMap 을 사용했기 때문에 스레드에 안전하지 않은 코드다  
-따라서 이런 문제를 해결하기 위해서 함수형 프로그래밍을 이용하여 **동시성** 과 **가변 상태** 가 만나는 상황을 완전히 없애는 것이다.  
+따라서 이런 문제를 해결하기 위해서 함수형 프로그래밍을 이용하여 **동시성** 과 **가변 상태** 가 만나는 상황을 완전히 없애는 것이다.
+
+> 
+우선 메모제이션은 알고리즘에서 자주 사용하는 테크닉으로써 대표적으로 Dynamic Programing 메모제이션을 이용한 기법이다.  
+메모제이션은 위에서 살펴본 것처럼 미리 수행한 연산을 담아놓는 캐시의 역할을 수행한다고 볼 수 있다.  
+  
 
 ### 참조 투명성의 의미 
 참조 투명성이란 "인수가 같다면 결과도 항상 같아야 한다" 라는 규칙을 만족하는 것을 말한다  
 위에서 했던 Tree 의 functionalUpdate 를 다시 떠올려보자   
+functionalUpdate 메소드는 호출하면 항상 새로운 객체를 생성해서 반환한다 (root 부터 특정 업데이트 하려는 노드까지)  
+그렇다면 functionalUpdate 는 호출될 때마다 항상 같은 값을 반환한다고 볼 수 있을까 ?  
+실제 래퍼런스는 같지 않지만 논리적으로 같다고 볼 수 있기 때문에 참조 투명성을 지켰다고 볼 수 있다  
+- identity 와 equality 에 대해서 얘기하고 싶은거 같다 
+
+## 콤비네이터 (combinator)
+함수형 프로그래밍에서는 두 합수를 인자로 받아서 다른 함수를 반환하는 등의 함수를 조합하는 **고차원 함수** 를 많이 사용하게 됨  
+이처럼 함수를 조합하는 기능을 **콤비네이터** 라고 부른다  
+ex) CompletableFuture 에서 thenCombine 이라는 메서드는 CompletionStage, BiFunction 2개를 인자로 받아서 새로운 ComputableFuture 를 생성한다 
+```java
+public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
+    //...
+    public <U,V> CompletableFuture<V> thenCombine(
+        CompletionStage<? extends U> other,
+        BiFunction<? super T,? super U,? extends V> fn) {
+        return biApplyStage(null, other, fn);
+    }
+}
+```
+콤비네이터를 자세히 살펴보는 것은 이 책에서는 무리일 것 같다 
+ㄴ 맨날 이런식이네 ...
+  
+이번에는 함수의 조합의 예제
+```java
+static <A, B, C> Function<A, C> compose(Function<B, C> g, Function<A, B> f){
+    return x -> g.apply(f.apply(x));
+}
+```
+- g(f(x)) 의 예제를 보여주고 싶은가 보다 
+
+```java
+static <A> Function<A, A> repeat(int n, Function<A, A> f){
+    return n == 0 ? x -> x : compose(f, repeat(n-1, f));
+}
+```
+- 이번에는 반복을 수행하는 함수를 이용해서 내부반복을 구현했다 
  
