@@ -309,6 +309,7 @@ Hello 6 bottles of beer
     def main(args: Array[String]) {
     	var count = 0
     	val inc = () => count += 1 // count를 캡쳐하고 증가시키는 클로저
+    	inc()
     	println(count) // 1이 출력
     	inc()
     	println(count) // 2가 출력
@@ -324,6 +325,7 @@ Hello 6 bottles of beer
     	inc.run();
     	System.out.println(count);
     	inc.run();
+    	System.out.println(count);
     }
     ```
 
@@ -407,7 +409,7 @@ Hello 6 bottles of beer
     ```scala
     class Box
     val b1 = new Box() with Sized
-    println(b1.isEmpty()) // true ㅜㄹ력
+    println(b1.isEmpty()) // true 출력
     val b2 = new Box()
     b2.isEmpty() // 컴파일 에러: Box 클래스 선언이 Sized를 상속하지 않았음
     ```
