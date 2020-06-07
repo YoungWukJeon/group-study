@@ -5,10 +5,14 @@ public class Main {
     static TrainJourney link(TrainJourney start, TrainJourney end){
         if(start == null)
             return end;
+        // X -> Y -> end = (Y -> Z)
+        // start: X -> Y -> end = (Y -> Z)
+        // end: (Y -> Z)
         TrainJourney current = start;
         while(current.onward != null){
             current = current.onward;
         }
+        // current = end
         current.onward = end;
 
         return start;
@@ -30,10 +34,14 @@ public class Main {
         // Y -> Z
         TrainJourney secondTrainJourney = new TrainJourney(20, new TrainJourney(30, null));
 
-        TrainJourney result = link(firstTrainJourney, secondTrainJourney);
+//        TrainJourney result = link(firstTrainJourney, secondTrainJourney);
+        // x -> y -> y -> z -> y ->
 
-        printTrainJourney(result);
-        printTrainJourney(firstTrainJourney);
+        TrainJourney result1 = link(firstTrainJourney, firstTrainJourney);
+
+//        printTrainJourney(result);
+//        printTrainJourney(firstTrainJourney);
+//        printTrainJourney(result1);
     }
 
     static void appendTest(){
@@ -50,8 +58,8 @@ public class Main {
     }
 
     public static void main(String[] args){
-//        linkTest();
-        appendTest();
+        linkTest();
+//        appendTest();
     }
 
     static void printTrainJourney(TrainJourney start){

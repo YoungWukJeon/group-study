@@ -38,7 +38,10 @@ public class LazyLinkedList<T> implements LazyList<T> {
     }
 
     public static LazyLinkedList<Integer> from(int n){
-        return new LazyLinkedList<Integer>(n, () -> from(n+1));
+        return new LazyLinkedList<Integer>(n, () -> {
+            System.out.println("call .." + n);
+            return from(n+1);
+        });
     }
 
     public static <T> void printAll(LazyList<T> lazyList){
