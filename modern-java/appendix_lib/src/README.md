@@ -255,4 +255,31 @@ Arrays.parallelPrefix(ones, (a, b) -> a + b);
 // 1, 2, 3, 4, ... 10
 ```
 
-### Numbers 와 Math
+### Numbers 
+- Short, Integer, Long, Float, Double 클래스에 정적 메서드 sum, min, mac 추가 
+- Integer, Long 에는 부호 없는 값을 처리하는 compareUnsigned, divideUnsigned, remainUnsigned, toUnsignedString 추가 
+- Integer, Long 에는 부호 없는 int, long 값으로 파싱하는 parseUnsignedInt, parseUnsignedLong 추가 
+- Byte, Short 인수를 비부호 int, long 으로 변환하는 toUnsignedInt, toUnsignedLong 추가 
+- Double, Float 에는 유한 소수인지 검사하는 isFinite 추가 
+- Boolean 두 불리언 값을 and, or, xor 연산을 수행하는 logicalAnd, logicalOr, logicalXor 추가 
+- BigInteger 기본형으로 바꿀수 있는 byteValueExact, shortValueExact, intValueExact, longValueExact 추가 
+ㄴ 대신 정보 손실이 발생하면 예외가 발생  
+   
+### Math
+연산 결과에 오버플로우가 발생했을 때 산술 예외를 발생시키는 addExact, subtractExact, multiplyExact, incrementExact, decrementExact, negateExact 등의 메서드 추가  
+long 을 int 로 변경하는 정적 메서드 toIntExact 와 floorMod, floorDiv, nextDown 등의 정적 메서드 추가  
+
+## Files
+파일 관련 처리를 스트림으로 할 수 있음  
+- Files.list : 주어진 디렉토리의 개체를 포함하는 Stream<Path> 를 생성
+ㄴ 재궈로 수행되지 않으며, 스트림의 게으른 속성을 이용할 수 있음 
+- Files.walk : Files.list 와 동일하지만 재귀적으로 처리함  (dfs)
+- Files.find : 디렉터리를 재귀적으로 탐색하면서 predicate 와 일치하는 개체를 찾아서 Stream<Path> 를 생성 
+
+## 리플랙션
+이전 부록에 살펴보았던 어노테이션 수정에 따라서 리플렉션 API 도 업데이트 됨  
+java.lang.reflect.Parameter 가 추가되어 메서드 파라미터 정보를 이용한 리플렉션이 가능함  
+
+## String
+구분 기호로 문자열을 연결하는 join 메서드가 추가됨  
+ 
