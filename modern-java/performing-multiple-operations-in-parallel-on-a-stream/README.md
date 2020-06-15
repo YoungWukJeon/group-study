@@ -58,7 +58,7 @@
 - StreamForker의 getResults() 메서드의 내부를 다음과 같이 구현할 수 있다.
 
     ```java
-    public Result getResults() {
+    public Results getResults() {
     	ForkingStreamConsumer<T> consumer = build();
     	try {
     		stream.sequential().forEach(consumer);
