@@ -498,7 +498,7 @@ ccCVV=뭘까)
     - 유효성 검사를 해야 하는 컨트롤러 메서드에 검사를 수행하는 것을 지정한다. 여기서는 DesignTacoController의 processDesign() 메서드와  OrderController의 processOrder() 메서드가 해당된다.
     - 검사 에러를 보여주도록 폼 뷰를 수정한다.
 
-## 유효성 검사 규칙 선언하
+## 유효성 검사 규칙 선언하기
 
 - 유효성 검사 규칙을 선언하기 위해 @NotNull과 @Size를 사용하도록 변경된 Taco 클래스를 보여준다.
 
