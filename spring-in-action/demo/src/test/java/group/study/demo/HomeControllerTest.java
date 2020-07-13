@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
 
-@WebMvcTest(HomeController.class)    // HomeController의 웹 페이지 테스트
+@WebMvcTest   // HomeController의 웹 페이지 테스트
 public class HomeControllerTest {
     @Autowired
     private MockMvc mockMvc;    // MockMvc를 주입한다
