@@ -21,6 +21,16 @@ button {
     outline: inherit;
 }
 
+h3 {
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.6px;
+    color: #212529;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/***여기부터 header*****/
 #fixed-bar {
     width: 100%;
     background-color: #fff;
@@ -127,6 +137,7 @@ button {
     top: 17px;
 }
 
+/***여기부터 section*****/
 /*  검색용 UI-start */
 /* #content {
     position: relative;
@@ -151,6 +162,126 @@ button {
 } */
 /*  검색용 UI-end */
 
+#popular-products {
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    padding: 120px 0;
+}
+
+.title-line-divider {
+    width: 70px;
+    border-top: 2px solid rgb(214, 171, 127);
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+#popular-products .cards-wrap {
+    width: 980px;
+}
+
+.cards-wrap {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.card-top {
+    position: relative;
+    text-align: left;
+    display: inline-block;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    width: calc(24% - 34px);
+    margin-right: 34px;
+    margin-bottom: 40px;
+}
+
+.card-top:hover {
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+    top: -2px;
+}
+
+.card-link {
+    text-decoration: none;
+    color: #212529;
+}
+
+.card-image {
+    width: 100%;
+    position: relative;
+    height: 160px;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+    background-color: #f8f9fa;
+}
+
+.card-image img {
+    width: 100%;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
+
+.card-description {
+    padding: 16px;
+    padding-bottom: 0;
+}
+
+.card-title {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.6px;
+    color: #212529;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 6px;
+    line-height: 1.2;
+}
+
+.card-region-name {
+    font-size: 15px;
+    color: #868e96;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.card-price {
+    font-size: 15px;
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e9ecef;
+    line-height: 1.3;
+    color: rgb(18, 184, 134);
+}
+
+.card-counts {
+    padding: 12px 0;
+    color: #adb5bd;
+    font-size: 13px;
+}
+
+.categories-group {
+    text-align: center;
+}
+
+.btn-category {
+    padding: 4px 20px;
+    border-radius: 100px;
+    border: 1px solid #E9ECF3;
+    margin-bottom: 8px;
+}
+
+.btn {
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+}
 
 
 
@@ -163,6 +294,8 @@ button {
 
 
 
+
+/***여기부터 footer*****/
 
 footer {
     padding: 40px 0 67px 0;
