@@ -8,3 +8,13 @@ create table user(
     update_date DATETIME,
     last_login_date DATETIME
 );
+
+create table product(
+    no BIGINT primary key auto_increment,
+    name VARCHAR,
+    category VARCHAR(50),
+    description TEXT,
+    price BIGINT,
+    create_date DATETIME,
+    update_date DATETIME
+);
