@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "user")
 @Entity
@@ -31,4 +33,7 @@ public class UserEntity {
     @Column(name = "last_login_date", nullable = false)
     private LocalDateTime lastLoginDate;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_no")
+    private final List<AuthorityEntity> authorityEntityList = new ArrayList<>();
 }
