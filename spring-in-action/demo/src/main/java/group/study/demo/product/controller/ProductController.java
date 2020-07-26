@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/product")
 public class ProductController {
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     @GetMapping("/test")
     public String productView(Model model) {
