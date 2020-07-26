@@ -1,6 +1,5 @@
 package group.study.demo.security.service;
 
-import group.study.demo.persistence.entity.AuthorityEntity;
 import group.study.demo.persistence.entity.UserEntity;
 import group.study.demo.persistence.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -26,18 +26,19 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         Optional<UserEntity> userEntityOptional = userRepository.findByEmail(username);
-        if (userEntityOptional.isPresent()) {
-            UserEntity userEntity = userEntityOptional.get();
-            List<SimpleGrantedAuthority> authorityList = userEntity.getAuthorityEntityList().stream()
-                    .map(authority -> new SimpleGrantedAuthority(authority.getRole()))
-                    .collect(Collectors.toList());
+        UserEntity userEntity = userEntityOptional.orElseThrow( () -> new UsernameNotFoundException("user not found"));
 
-            UserDetails user = User.withUsername(userEntity.getEmail())
-                    .password(userEntity.getPassword())
-                    .authorities(authorityList).build();
-            return user;
-        }
+        userEntity.setLastLoginDate(LocalDateTime.now());
+        userRepository.saveAndFlush(userEntity);
 
-        return null;
+        List<GrantedAuthority> authorityList = userEntity.getAuthorityEntityList().stream()
+                .map(authorityEntity -> new SimpleGrantedAuthority(authorityEntity.getRole()))
+                .collect(Collectors.toList());
+
+
+        return User.withUsername(userEntity.getEmail())
+                .password(userEntity.getPassword())
+                .authorities(authorityList)
+                .build();
     }
 }

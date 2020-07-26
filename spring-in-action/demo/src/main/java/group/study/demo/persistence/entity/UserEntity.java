@@ -1,8 +1,6 @@
 package group.study.demo.persistence.entity;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -36,4 +34,18 @@ public class UserEntity {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_no")
     private final List<AuthorityEntity> authorityEntityList = new ArrayList<>();
+
+    @Builder
+    public UserEntity(String email, String password, String salt, String name, List<AuthorityEntity> authorityEntityList,
+                      LocalDateTime createDate, LocalDateTime updateDate, LocalDateTime lastLoginDate){
+        this.email = email;
+        this.password = password;
+        this.salt = salt;
+        this.name = name;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+        this.lastLoginDate = lastLoginDate;
+        this.authorityEntityList.addAll(authorityEntityList);
+
+    }
 }

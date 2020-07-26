@@ -1,8 +1,6 @@
 package group.study.demo.persistence.entity;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -27,4 +25,28 @@ public class AuthorityEntity {
     private LocalDateTime createDate;
     @Column(name = "update_date", nullable = false)
     private LocalDateTime updateDate;
+
+    @Builder
+    public AuthorityEntity(Long userNo, String role, LocalDateTime createDate, LocalDateTime updateDate){
+        this.userNo = userNo;
+        this.role = role;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+    }
+
+
+    public enum RoleType {
+        USER("ROLE_USER"),
+        ADMIN("ROLE_ADMIN");
+
+        String name;
+
+        RoleType(String name){
+            this.name = name;
+        }
+
+        public String getName() {
+            return this.name;
+        }
+    }
 }
