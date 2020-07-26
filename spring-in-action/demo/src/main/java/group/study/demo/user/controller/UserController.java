@@ -1,24 +1,29 @@
 package group.study.demo.user.controller;
 
-import group.study.demo.persistence.entity.UserEntity;
-import group.study.demo.persistence.repository.UserRepository;
+
+import group.study.demo.user.model.request.UserSaveRequest;
+import group.study.demo.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    UserRepository userRepository;
+    private UserService userService;
 
-    @GetMapping("/a")
-    public String user(Model model) {
-        model.addAttribute("user" ,userRepository.findById(1L).orElse(null));
-        return "user";
+
+    @GetMapping("/join")
+    public String join(){
+        return "join";
+    }
+
+    @PostMapping("/join")
+    public String joinUser(UserSaveRequest userSaveRequest){
+        userService.save(userSaveRequest);
+        return "redirect:/login";
     }
 
 }

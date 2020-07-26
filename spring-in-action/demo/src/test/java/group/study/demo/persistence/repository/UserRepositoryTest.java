@@ -1,9 +1,12 @@
 package group.study.demo.persistence.repository;
 
+import group.study.demo.persistence.entity.UserEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,7 +27,11 @@ class UserRepositoryTest {
 
     @Test
     void testFindByEmail() {
-        System.out.println(userRepository.findByEmail("bbb"));
-    }
+        Optional<UserEntity> userEntityOptional = userRepository.findByEmail("zzz@a.com");
 
+        if (userEntityOptional.isPresent()){
+            System.out.println(userEntityOptional.get());
+            System.out.println(userEntityOptional.get().getAuthorityEntityList());
+        }
+    }
 }

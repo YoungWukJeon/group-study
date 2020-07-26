@@ -5,3 +5,4 @@ insert into product(name, category, description, price, create_date, update_date
 values
 ('name', 'category', 'description', 10, '1970-01-01 00:00:00', now()),
 ('name', 'category1', 'description', 10, '1970-01-01 00:00:00', now());
+
