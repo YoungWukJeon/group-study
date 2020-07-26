@@ -1214,7 +1214,7 @@ public String processOrder(@Valid Order order, Errors errors, SessionStatus sess
 - 이 때도 반환되는 객체를 User 타입으로 변환해야 한다.
 
 ```java
-Authentication authentication = SecurityContextHolder.getContext().getAuthentication());
+Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 User user = (User) authentication.getPrincipal();
 ```
 
