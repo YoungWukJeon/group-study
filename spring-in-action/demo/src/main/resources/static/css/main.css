@@ -124,7 +124,11 @@ a {
 .header-button:hover {
     /* background-color: rgb(214, 171, 127); */
     background-color: rgb(154, 111, 67);
-    color: #fff;
+    color: white;
+}
+
+.header-button a {
+    color: white;
 }
 
 #fixed-bar-user-area {
