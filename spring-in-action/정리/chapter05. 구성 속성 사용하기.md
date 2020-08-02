@@ -171,7 +171,7 @@ server:
 		</encoder>
 	</appender>
 	<logger name="root" level="INFO" />
-	<root leve="INFO">
+	<root level="INFO">
 		<appender-ref ref="STDOUT" />
 	</root>
 </configuration>
@@ -507,7 +507,7 @@ logging:
 
 ```yaml
 spring:
-	profiles:
+    profiles:
 		active:
 			- prod
 ```
@@ -519,7 +519,7 @@ spring:
 - 이 때는 다음과 같이 프로덕션 환경의 SPRING_PROFILES_ACTIVE를 설정할 수 있다.
 
 ```bash
-$ export SPRING_PROFILES_SCTIVE=prod
+$ export SPRING_PROFILES_ACTIVE=prod
 ```
 
 - 만일 실행 가능한 JAR 파일로 애플리케이션을 실행한다면, 다음과 같이 명령행 인자로 활성화 프로파일을 설정할 수도 있다.
