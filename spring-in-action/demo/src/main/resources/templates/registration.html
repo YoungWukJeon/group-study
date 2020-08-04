@@ -9,13 +9,13 @@
 
         <!-- <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
-        <link rel="stylesheet" href="../../static/css/login.css">
+        <link rel="stylesheet" href="../../static/css/registration.css">
 
         <!-- <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script> -->
     </head>
 
     <body>
-        <div id="login-content">
+        <div id="registration-content">
             <section id="logo-bar">
                 <div id="logo-bar-wrap" class="container">
                     <a href="./main.html">
@@ -26,7 +26,7 @@
 
             <section id="registration-form" class="container">
                 <form method=POST action="" class="form-sign">
-                    <h5 class="form-headline">📦 로그인 💵</h5>
+                    <h5 class="form-headline">🛒 계정 만들기 📝</h5>
 
                     <div class="form-group">
                         <input type="text" class="form-control" id="inputEmail" placeholder="이메일 입력">
@@ -36,8 +36,16 @@
                         <input type="password" class="form-control" id="inputPassword" placeholder="비밀번호 입력">
                     </div>
 
-                    <button class="btn regist-btn">로그인 하기</button>
-                    <a href="registration.html" class="btn login-btn">계정 만들기</a>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="confirmPassword" placeholder="비밀번호 확인하기">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="inputName" placeholder="이름 입력">
+                    </div>
+
+                    <button class="btn regist-btn">동의하고 시작하기</button>
+                    <a href="login.html" class="btn login-btn">로그인</a>
                 </form>
             </section>
         </div>
