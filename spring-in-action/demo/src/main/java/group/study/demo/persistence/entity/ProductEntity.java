@@ -21,14 +21,14 @@ public class ProductEntity {
     private String name;
     @Column(name = "category", nullable = false, length = 50)
     private String category;
-    @Column(name = "description", nullable = false)
+    @Column(name = "description")
     private String description;
-    @Column(name = "price", nullable = false)
+    @Column(name = "price")
     private Long price;
     @Column(name = "image")
     private String image;
-    @Column(name = "create_date", nullable = false)
+    @Column(name = "create_date")
     private LocalDateTime createDate;
-    @Column(name = "update_date", nullable = false)
+    @Column(name = "update_date")
     private LocalDateTime updateDate;
 }

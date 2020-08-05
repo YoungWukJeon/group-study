@@ -1,9 +1,9 @@
 CREATE TABLE user (
     no BIGINT PRIMARY KEY AUTO_INCREMENT,
-    email VARCHAR,
-    password VARCHAR,
-    salt VARCHAR(50),
-    name VARCHAR(20),
+    email VARCHAR UNIQUE NOT NULL,
+    password VARCHAR NOT NULL,
+    salt VARCHAR(50) NOT NULL,
+    name VARCHAR(20) NOT NULL,
     create_date DATETIME,
     update_date DATETIME,
     last_login_date DATETIME
@@ -11,8 +11,8 @@ CREATE TABLE user (
 
 CREATE TABLE product (
     no BIGINT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR,
-    category VARCHAR(50),
+    name VARCHAR NOT NULL,
+    category VARCHAR(50) NOT NULL,
     description TEXT,
     price BIGINT,
     image TEXT,

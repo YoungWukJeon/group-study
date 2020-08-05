@@ -24,11 +24,11 @@ public class UserEntity {
     private String salt;
     @Column(name = "name", nullable = false, length = 20)
     private String name;
-    @Column(name = "create_date", nullable = false)
+    @Column(name = "create_date")
     private LocalDateTime createDate;
-    @Column(name = "update_date", nullable = false)
+    @Column(name = "update_date")
     private LocalDateTime updateDate;
-    @Column(name = "last_login_date", nullable = false)
+    @Column(name = "last_login_date")
     private LocalDateTime lastLoginDate;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -46,6 +46,5 @@ public class UserEntity {
         this.updateDate = updateDate;
         this.lastLoginDate = lastLoginDate;
         this.authorityEntityList.addAll(authorityEntityList);
-
     }
 }
