@@ -4,12 +4,12 @@
     <head>
         <meta charset="UTF-8">
         <title>Demo Market</title>
-        <link rel="icon" type="image/png" sizes="16x16" href="../../static/favicon/favicon-16x16.png">
-        <link rel="manifest" href="../../static/favicon/site.webmanifest">
+        <link rel="icon" type="image/png" sizes="16x16" th:href="@{favicon/favicon-16x16.png}">
+        <link rel="manifest" th:href="@{favicon/site.webmanifest}">
 
         <!-- <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
-        <link rel="stylesheet" href="../../static/css/registration.css">
+        <link rel="stylesheet" th:href="@{css/registration.css}">
 
         <!-- <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script> -->
     </head>
@@ -18,8 +18,8 @@
         <div id="registration-content">
             <section id="logo-bar">
                 <div id="logo-bar-wrap" class="container">
-                    <a href="./main.html">
-                        <img alt="데모마켓" src="../../static/images/logo2.png" class="logo">
+                    <a href="main">
+                        <img alt="데모마켓" th:src="@{images/logo2.png}" class="logo">
                     </a>
                 </div>
             </section>
@@ -45,7 +45,7 @@
                     </div>
 
                     <button class="btn regist-btn">동의하고 시작하기</button>
-                    <a href="login.html" class="btn login-btn">로그인</a>
+                    <a href="login" class="btn login-btn">로그인</a>
                 </form>
             </section>
         </div>
