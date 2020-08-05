@@ -1,44 +1,44 @@
 package group.study.demo.user.service;
 
+import group.study.demo.auth.model.request.UserRegistrationRequest;
 import group.study.demo.persistence.entity.AuthorityEntity;
 import group.study.demo.persistence.entity.UserEntity;
 import group.study.demo.persistence.repository.UserRepository;
-import group.study.demo.user.model.request.UserLoginRequest;
-import group.study.demo.user.model.request.UserSaveRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.Collections;
-import java.util.Optional;
 
 @Service
 public class UserService {
-
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-
-    public void save(UserSaveRequest userSaveRequest){
-        // 유효성 검증
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-
+    @Transactional
+    public void save(UserRegistrationRequest userRegistrationRequest) {
+        // TODO: 2020-08-06 유효성 검사
         LocalDateTime now = LocalDateTime.now();
 
         AuthorityEntity authorityEntity = AuthorityEntity.builder()
                 .role(AuthorityEntity.RoleType.USER.getName())
                 .createDate(now)
+                .updateDate(now)
                 .build();
 
         UserEntity userEntity = UserEntity.builder()
-                .email(userSaveRequest.getEmail())
-                .password(bCryptPasswordEncoder.encode(userSaveRequest.getPassword()))
+                .email(userRegistrationRequest.getEmail())
+                .password(passwordEncoder.encode(userRegistrationRequest.getPassword()))
+                .name(userRegistrationRequest.getName())
                 .authorityEntityList(Collections.singletonList(authorityEntity))
                 .createDate(now)
+                .updateDate(now)
                 .build();
 
         userRepository.save(userEntity);
     }
-
 }

@@ -125,21 +125,21 @@ img {
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.regist-btn {
+.login-btn {
     background-color: rgb(18, 184, 134);
     border-color: rgb(18, 184, 134);
 }
 
-.regist-btn:hover {
+.login-btn:hover {
     background-color: rgb(13, 138, 100) !important;
     border-color: rgb(13, 138, 100) !important;
 }
 
-.regist-btn:focus {
+.login-btn:focus {
     box-shadow: 0 0 0 3px rgb(23, 230, 168) !important;
 }
 
-.login-btn {
+.regist-btn {
     margin-top: 8px;
     color: rgb(18, 184, 134);
     border-color: #f8f9fa;
@@ -147,7 +147,7 @@ img {
     text-decoration: none;
 }
 
-.login-btn:hover {
+.regist-btn:hover {
     color: rgb(13, 138, 100);
     background-color: rgb(192, 255, 215) !important;
     border-color: rgb(192, 255, 215) !important;

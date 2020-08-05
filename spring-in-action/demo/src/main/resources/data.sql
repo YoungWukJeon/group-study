@@ -1,5 +1,10 @@
-INSERT INTO user (email, password, salt, name, create_date, update_date, last_login_date)
-VALUES ('test@test.com', 'testpass', 'testsalt', '홍길동', '2020-05-20 14:01:11', '2020-05-20 14:01:11', '2020-08-04 17:53:38');
+INSERT INTO user (email, password, name, create_date, update_date, last_login_date)
+VALUES ('test@test.com', '$2a$10$C.Okl5Uo5eWn82/ZKsbWPOf82qox/pC6RzQ9fhhfK.f4MKwaSopbm', '홍길동',
+'2020-05-20 14:01:11', '2020-05-20 14:01:11', '2020-08-04 17:53:38');
+-- rawPassword: testpass
+
+INSERT INTO authority (user_no, role, create_date, update_date)
+VALUES (1, 'ROLE_USER', '2020-05-20 14:01:11', '2020-05-20 14:01:11');
 
 --insert into product(name, category, description, price, create_date, update_date)
 --values

@@ -7,7 +7,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Table(name = "user")
+@Table(name = "user", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "email")})
 @Entity
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -20,8 +21,6 @@ public class UserEntity {
     private String email;
     @Column(name = "password", nullable = false)
     private String password;
-    @Column(name = "salt", nullable = false, length = 50)
-    private String salt;
     @Column(name = "name", nullable = false, length = 20)
     private String name;
     @Column(name = "create_date")
@@ -36,11 +35,10 @@ public class UserEntity {
     private final List<AuthorityEntity> authorityEntityList = new ArrayList<>();
 
     @Builder
-    public UserEntity(String email, String password, String salt, String name, List<AuthorityEntity> authorityEntityList,
+    public UserEntity(String email, String password, String name, List<AuthorityEntity> authorityEntityList,
                       LocalDateTime createDate, LocalDateTime updateDate, LocalDateTime lastLoginDate){
         this.email = email;
         this.password = password;
-        this.salt = salt;
         this.name = name;
         this.createDate = createDate;
         this.updateDate = updateDate;

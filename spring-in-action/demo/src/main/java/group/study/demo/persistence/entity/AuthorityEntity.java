@@ -34,7 +34,6 @@ public class AuthorityEntity {
         this.updateDate = updateDate;
     }
 
-
     public enum RoleType {
         USER("ROLE_USER"),
         ADMIN("ROLE_ADMIN");

@@ -1,4 +1,4 @@
-package group.study.demo.security.service;
+package group.study.demo.auth;
 
 import group.study.demo.persistence.entity.AuthorityEntity;
 import group.study.demo.persistence.entity.UserEntity;
@@ -14,20 +14,17 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class CustomUserDetailsServiceUnitTest {
-
+public class AuthServiceUnitTest {
     @InjectMocks
-    private CustomUserDetailsService customUserDetailsService;
+    private AuthService authService;
 
     @Mock
     private UserRepository userRepository;
-
-
 
     @Test
     void loadUserByUsername_사용자없음() {
@@ -37,7 +34,7 @@ class CustomUserDetailsServiceUnitTest {
                 .willReturn(Optional.empty());
 
         // when
-        assertThrows(UsernameNotFoundException.class, () -> customUserDetailsService.loadUserByUsername(email));
+        assertThrows(UsernameNotFoundException.class, () -> authService.loadUserByUsername(email));
 
         // then
     }
@@ -51,11 +48,10 @@ class CustomUserDetailsServiceUnitTest {
                 .willReturn(Optional.of(UserEntity.builder().email(email).password("123").authorityEntityList(authorityEntityList).build()));
 
         // when
-        UserDetails user = customUserDetailsService.loadUserByUsername(email);
+        UserDetails user = authService.loadUserByUsername(email);
 
         // then
         assertEquals(email, user.getUsername());
-
         verify(userRepository).findByEmail(email);
     }
 }

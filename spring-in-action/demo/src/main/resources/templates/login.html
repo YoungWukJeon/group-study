@@ -25,19 +25,19 @@
             </section>
 
             <section id="registration-form" class="container">
-                <form method=POST action="" class="form-sign">
+                <form method=POST th:action="@{/login}" class="form-sign">
                     <h5 class="form-headline">📦 로그인 💵</h5>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" id="email" placeholder="이메일 입력">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="이메일 입력">
                     </div>
 
                     <div class="form-group">
-                        <input type="password" class="form-control" id="password" placeholder="비밀번호 입력">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호 입력">
                     </div>
 
-                    <button class="btn regist-btn">로그인 하기</button>
-                    <a href="registration" class="btn login-btn">계정 만들기</a>
+                    <button class="btn login-btn">로그인 하기</button>
+                    <a href="registration" class="btn regist-btn">계정 만들기</a>
                 </form>
             </section>
         </div>

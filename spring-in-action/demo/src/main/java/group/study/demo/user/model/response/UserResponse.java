@@ -9,7 +9,6 @@ public class UserResponse {
     private final Long userNo;
     private final String email;
     private final String password;
-    private final String salt;
     private final String name;
     private final LocalDateTime createDate;
     private final LocalDateTime updateDate;
