@@ -1,7 +1,35 @@
 package group.study.demo.product.service;
 
+import group.study.demo.persistence.entity.ProductEntity;
+import group.study.demo.persistence.repository.ProductRepository;
+import group.study.demo.product.model.response.ProductResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
+    @Autowired
+    private ProductRepository productRepository;
+
+    public List<ProductResponse> getAllProducts() {
+        return productRepository.findAll()
+                .stream()
+                .map(this::productEntityToProductResponse)
+                .collect(Collectors.toList());
+    }
+
+    private ProductResponse productEntityToProductResponse(ProductEntity productEntity) {
+        return new ProductResponse(
+                productEntity.getNo(),
+                productEntity.getName(),
+                productEntity.getCategory(),
+                productEntity.getDescription(),
+                productEntity.getPrice(),
+                productEntity.getImage(),
+                productEntity.getCreateDate(),
+                productEntity.getUpdateDate());
+    }
 }

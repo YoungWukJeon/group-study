@@ -1,6 +1,7 @@
 package group.study.demo.persistence.entity;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -24,6 +25,8 @@ public class ProductEntity {
     private String description;
     @Column(name = "price", nullable = false)
     private Long price;
+    @Column(name = "image")
+    private String image;
     @Column(name = "create_date", nullable = false)
     private LocalDateTime createDate;
     @Column(name = "update_date", nullable = false)
