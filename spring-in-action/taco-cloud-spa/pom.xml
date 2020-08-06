@@ -29,5 +29,6 @@
         <module>tacocloud-security</module>
         <module>tacocloud-domain</module>
         <module>tacocloud-data</module>
+        <module>tacocloud-api</module>
     </modules>
 </project>

@@ -9,10 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>taco-cloud</artifactId>
+    <artifactId>tacocloud-api</artifactId>
     <packaging>jar</packaging>
-    <name>taco-cloud</name>
-    <description>Taco Cloud Example</description>
+
+    <name>tacocloud-api</name>
+    <description>Taco Cloud API</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -37,33 +38,22 @@
             <artifactId>tacocloud-security</artifactId>
             <version>${tacocloud.version}</version>
         </dependency>
-        <dependency>
-            <groupId>sia</groupId>
-            <artifactId>tacocloud-api</artifactId>
-            <version>${tacocloud.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>sia</groupId>
-            <artifactId>tacocloud-ui</artifactId>
-            <version>${tacocloud.version}</version>
-        </dependency>
 
-        <!-- Run against embedded H2 database by default -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
-        <!-- Actuator and DevTools...just because -->
+        <!-- Necessary Boot starters -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <artifactId>spring-boot-starter-data-rest</artifactId>
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Test dependencies -->
@@ -72,24 +62,5 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>htmlunit-driver</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>
