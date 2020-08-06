@@ -24,11 +24,5 @@
 
     <modules>
         <module>tacos</module>
-        <module>tacocloud-api</module>
-        <module>tacocloud-data</module>
-        <module>tacocloud-domain</module>
-        <module>tacocloud-security</module>
-        <module>tacocloud-web</module>
-        <module>tacocloud-ui</module>
     </modules>
 </project>
