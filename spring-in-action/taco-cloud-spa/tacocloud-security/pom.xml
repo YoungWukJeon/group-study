@@ -22,11 +22,11 @@
 
     <dependencies>
         <!-- TacoCloud dependencies -->
-<!--        <dependency>-->
-<!--            <groupId>sia</groupId>-->
-<!--            <artifactId>tacocloud-data</artifactId>-->
-<!--            <version>${tacocloud.version}</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>sia</groupId>
+            <artifactId>tacocloud-data</artifactId>
+            <version>${tacocloud.version}</version>
+        </dependency>
         <dependency>
             <groupId>sia</groupId>
             <artifactId>tacocloud-domain</artifactId>
