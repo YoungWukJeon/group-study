@@ -27,11 +27,11 @@
 <!--            <artifactId>tacocloud-data</artifactId>-->
 <!--            <version>${tacocloud.version}</version>-->
 <!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>sia</groupId>-->
-<!--            <artifactId>tacocloud-domain</artifactId>-->
-<!--            <version>${tacocloud.version}</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>sia</groupId>
+            <artifactId>tacocloud-domain</artifactId>
+            <version>${tacocloud.version}</version>
+        </dependency>
 
         <!-- Necessary Boot starters -->
         <dependency>
