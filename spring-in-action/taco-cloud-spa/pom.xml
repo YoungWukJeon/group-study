@@ -24,5 +24,6 @@
 
     <modules>
         <module>tacos</module>
+        <module>tacocloud-web</module>
     </modules>
 </project>
