@@ -1,3 +1,5 @@
+책의 모든 예제 : [https://github.com/habuma/spring-in-action-5-samples/tree/master/ch06](https://github.com/habuma/spring-in-action-5-samples/tree/master/ch06)
+
 # REST 컨트롤러 작성하기
 
 - 타코 클라우드 UI를 멋지게 만드는 동안, 필자는 많이 알려진 앵귤러(Angular) 프레임워크를 사용해서 SPA(Single-Page Application, 단일-페이지 애플리케이션)로 프론트엔드를 구축하기로 결정하였다.
