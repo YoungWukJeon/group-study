@@ -12,7 +12,7 @@ import java.util.List;
 
 @Slf4j
 @Controller
-@RequestMapping("/order")
+@RequestMapping(path = "/order")
 public class OrderController {
     @GetMapping
     public String orderView(Model model) {
@@ -21,7 +21,7 @@ public class OrderController {
         return "order";
     }
 
-    @PostMapping("/save")
+    @PostMapping(path = "/save")
     public String save() {
         return "order";
     }

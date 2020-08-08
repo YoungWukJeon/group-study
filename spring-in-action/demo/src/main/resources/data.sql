@@ -22,10 +22,10 @@ VALUES ('스프링 인 액션 : 스프링 5의 강력한 기능과 생산성을 
 '스프링 인 액션에 대한 설명',
 31500, 'images/products/book/book01.jpg', '2020-03-20 09:17:13', '2020-03-20 09:17:13');
 
-INSERT INTO product (name, category, description, price, image, create_date, update_date)
-VALUES ('SN57 만사형통 스트레치 드레스셔츠', '의류',
-'셔츠 설명',
-37800, 'images/products/dress/dress01.png', '2020-03-20 09:17:13', '2020-03-20 09:17:13');
+-- INSERT INTO product (name, category, description, price, image, create_date, update_date)
+-- VALUES ('SN57 만사형통 스트레치 드레스셔츠', '의류',
+-- '셔츠 설명',
+-- 37800, 'images/products/dress/dress01.png', '2020-03-20 09:17:13', '2020-03-20 09:17:13');
 
 INSERT INTO product (name, category, description, price, image, create_date, update_date)
 VALUES ('생초밥 2인', '식품',

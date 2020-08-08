@@ -49,6 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .passwordParameter("password")
                         .defaultSuccessUrl("/")
             .and()
-                .logout();
+                .logout()
+                .logoutSuccessUrl("/");
     }
 }

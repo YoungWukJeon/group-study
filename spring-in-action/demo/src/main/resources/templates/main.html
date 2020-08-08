@@ -30,7 +30,7 @@
             <div class="title-line-divider"></div>
 
             <section class="cards-wrap">
-                <article class="card-top" th:each="product : ${products}">
+                <article class="card-top" th:each="product : ${popularProducts}">
                     <a class="card-link" th:data-event-label="${product.no}" th:href="@{|/product/${product.no}|}">
                         <div class="card-image">
                             <img alt="boxster" th:src="@{${product.image}}">
@@ -59,6 +59,7 @@
 
             <!-- 카테고리 -->
             <div class="categories-group">
+                <a class="btn btn-category" href="/main">전체</a>&nbsp;
                 <a class="btn btn-category" href="/main?category=food">식품</a>&nbsp;
                 <a class="btn btn-category" href="/main?category=book">도서</a>&nbsp;
                 <a class="btn btn-category" href="/main?category=dress">옷</a>&nbsp;
@@ -66,105 +67,21 @@
             </div>
 
             <section class="cards-wrap">
-                <article class="card-top">
-                    <a class="card-link" data-event-label="12345" href="./main.html?product_no=12345">
+                <article class="card-top" th:each="product : ${categorizedProducts}">
+                    <a class="card-link" th:data-event-label="${product.no}" th:href="@{|/product/${product.no}|}">
                         <div class="card-image">
-                            <img alt="boxster" src="../../static/images/products/etc/boxster.jpg">
+                            <img alt="boxster" th:src="@{${product.image}}">
                         </div>
 
                         <div class="card-description">
-                            <h2 class="card-title">상품명</h2>
+                            <h2 class="card-title" th:text="${product.name}">상품명</h2>
 
-                            <div class="card-region-name">
-                                서울 광진구 광장동
-                            </div>
+                            <div class="card-region-name" th:text="${product.category}">카테고리</div>
 
-                            <div class="card-price">
-                                10,000원
-                            </div>
+                            <div class="card-price" th:text="${#numbers.formatCurrency(product.price)}">0원</div>
 
                             <div class="card-counts">
-                                <span>관심 4</span>
-                                ∙
-                                <span>채팅 50</span>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="card-top">
-                    <a class="card-link" data-event-label="12345" href="./main.html?product_no=12345">
-                        <div class="card-image">
-                            <img alt="boxster" src="../../static/images/products/book/book01.jpg">
-                        </div>
-
-                        <div class="card-description">
-                            <h2 class="card-title">상품명</h2>
-
-                            <div class="card-region-name">
-                                서울 광진구 광장동
-                            </div>
-
-                            <div class="card-price">
-                                10,000원
-                            </div>
-
-                            <div class="card-counts">
-                                <span>관심 4</span>
-                                ∙
-                                <span>채팅 50</span>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="card-top">
-                    <a class="card-link" data-event-label="12345" href="./main.html?product_no=12345">
-                        <div class="card-image">
-                            <img alt="boxster" src="../../static/images/products/dress/dress01.png">
-                        </div>
-
-                        <div class="card-description">
-                            <h2 class="card-title">상품명</h2>
-
-                            <div class="card-region-name">
-                                서울 광진구 광장동
-                            </div>
-
-                            <div class="card-price">
-                                10,000원
-                            </div>
-
-                            <div class="card-counts">
-                                <span>관심 4</span>
-                                ∙
-                                <span>채팅 50</span>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="card-top">
-                    <a class="card-link" data-event-label="12345" href="./main.html?product_no=12345">
-                        <div class="card-image">
-                            <img alt="boxster" src="../../static/images/products/food/food01.jpeg">
-                        </div>
-
-                        <div class="card-description">
-                            <h2 class="card-title">상품명</h2>
-
-                            <div class="card-region-name">
-                                서울 광진구 광장동
-                            </div>
-
-                            <div class="card-price">
-                                10,000원
-                            </div>
-
-                            <div class="card-counts">
-                                <span>관심 4</span>
-                                ∙
-                                <span>채팅 50</span>
+                                <span>관심 4</span>∙<span>채팅 50</span>
                             </div>
                         </div>
                     </a>

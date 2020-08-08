@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "/auth")
+@RequestMapping(path = "/auth")
 public class AuthController {
     @Autowired
     private UserService userService;
 
-    @PostMapping(value = "/registration")
+    @PostMapping(path = "/registration")
     public String registration(UserRegistrationRequest userRegistrationRequest) {
         userService.save(userRegistrationRequest);
         return "redirect:/login";

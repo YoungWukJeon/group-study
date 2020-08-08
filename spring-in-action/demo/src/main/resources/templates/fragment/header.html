@@ -23,7 +23,7 @@
                 </div>
             </section>
 
-            <section id="fixed-bar-login">
+            <section id="fixed-bar-login" th:if="${user == null}">
                 <button id="header-login-button" class="header-button">
                     <a href="login">로그인</a>
                 </button>
@@ -33,7 +33,7 @@
                 </button>
             </section>
 
-            <section id="fixed-bar-user-area" style="display: none;">
+            <section id="fixed-bar-user-area" th:unless="${user == null}">
                 <button id="header-write-button" class="header-icon-button">
                     <img alt="Write" th:src="@{images/icon/write.svg}" class="">
                 </button>
@@ -43,7 +43,7 @@
                 </button>
 
                 <button id="header-user-profile-button" class="header-icon-button non-hover">
-                    <img alt="Cart" th:src="@{images/profiles/profile01.jpeg}" class="header-user-profile-image">
+                    <img alt="Profile" th:src="@{images/profiles/profile01.jpeg}" class="header-user-profile-image">
                     <img alt="Spread" th:src="@{images/icon/spread.svg}" id="header-user-profile-spread">
                 </button>
             </section>
@@ -58,9 +58,9 @@
                         <div class="menu-item">메뉴2</div>
                     </a>
 
-                    <a href="main">
-                        <div class="menu-item">로그아웃</div>
-                    </a>
+                    <form method="POST" th:action="@{/logout}" id="logoutForm">
+                        <div id="menu-item-logout" class="menu-item">로그아웃</div>
+                    </form>
                 </div>
             </section>
         </div>
