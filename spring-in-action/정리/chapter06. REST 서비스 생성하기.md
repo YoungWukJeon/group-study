@@ -109,7 +109,7 @@ public class DesignTacoController {
 - 예를 들어, XML로 출력하고자 할 때는 다음과 같이 "text/xml"을 produces 속성에 추가하면 된다.
 
 ```java
-@RequestMapping(path="design", produces={"application/json", "text/html"})
+@RequestMapping(path="design", produces={"application/json", "text/xml"})
 ```
 
 - DesignTacoController 클래스에 @CrossOrigin 애노테이션이 지정되어 있다.
@@ -303,7 +303,7 @@ public void deleteOrder(@PathVariable("orderId") Long orderId) {
 ```
 
 - 이 경우 만일 클라이언트가 타코 자체에 대한 다른 HTTP 작업을 수행하고 싶다면 /design 경로의 URL에 id 속성 값을 추가해야(하드코딩을 해야) 한다는 것을 알고 있어야 한다.
-- 그리고 어떤 경우든 해당 경로 앞에 http://나 https:// 및 API 호스트 이름도 붙여야 한다.
+- 그리고 어떤 경우든 해당 경로 앞에 `http://`나 `https://` 및 API 호스트 이름도 붙여야 한다.
 - 이와는 다르게 API에 하이퍼미디어가 활성화되면 해당 API에는 자신과 관련된 URL이 나타나므로 그것을 클라이언트가 하드코딩하지 않아도 된다.
 
 ```json
@@ -940,7 +940,7 @@ public class RecentTacosController {
 ## 커스텀 하이퍼링크를 스프링 데이터 엔드포인트에 추가하기
 
 - 스프링 데이터 HATEOAS는 ResourceProcessor를 제공한다.
-- 이것은 API를 통해 리소스가 번환되기 전에 리소스를 조작하는 인터페이스다.
+- 이것은 API를 통해 리소스가 변환되기 전에 리소스를 조작하는 인터페이스다.
 
 ```java
 @Bean
