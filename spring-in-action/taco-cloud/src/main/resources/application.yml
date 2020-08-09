@@ -1,0 +1,20 @@
+spring:
+    thymeleaf:
+        cache: false
+
+taco:
+    orders:
+        pageSize: 10
+
+---
+spring:
+    profiles: prod
+
+    datasource:
+        url: jdbc:mysql://localhost/tacocloud
+        username: tacouser
+        password: tacopassword
+
+logging:
+    level:
+        tacos: WARN

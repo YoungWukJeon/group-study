@@ -15,3 +15,11 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+---
+
+logging:
+  file: demo.log
+  level:
+    root: INFO
+    org.springframework.security: DEBUG
