@@ -15,7 +15,16 @@ public class AuthController {
 
     @PostMapping(path = "/registration")
     public String registration(UserRegistrationRequest userRegistrationRequest) {
-        userService.save(userRegistrationRequest);
-        return "redirect:/login";
+        // TODO: 2020-08-09 좀 더 나이스한 valid 처리 및 예외 처리가 필요함
+        try {
+            if (!userRegistrationRequest.getPassword().equals(userRegistrationRequest.getPasswordConfirm())) {
+                return "redirect:/registration";
+            }
+            userService.save(userRegistrationRequest);
+            return "redirect:/login";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/registration";
+        }
     }
 }

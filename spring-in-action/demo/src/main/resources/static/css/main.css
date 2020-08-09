@@ -184,8 +184,14 @@ a {
     background-color: #FBFBFD;
 }
 
-.btn-category:foucs {
+.btn-category:focus {
     box-shadow: none;
+}
+
+.select-category {
+    color: rgb(18, 184, 134);
+    background-color: #FBFBFD;
+    border-color: rgb(18, 184, 134);
 }
 
 .btn {

@@ -9,7 +9,7 @@
     <header id="fixed-bar" class="fixed-bar-box-shadow">
         <div id="fixed-bar-wrap">
             <h1 id="fixed-bar-logo-title"> <!--id에 따른 css 적용x-->
-                <a href="main">
+                <a th:href="@{/main}">
                     <img alt="데모마켓" th:src="@{images/logo2.png}" class="fixed-logo">
                 </a>
             </h1>
@@ -25,11 +25,11 @@
 
             <section id="fixed-bar-login" th:if="${user == null}">
                 <button id="header-login-button" class="header-button">
-                    <a href="login">로그인</a>
+                    <a th:href="@{/login}">로그인</a>
                 </button>
 
                 <button id="header-regist-button" class="header-button">
-                    <a href="registration">회원가입</a>
+                    <a th:href="@{/registration}">회원가입</a>
                 </button>
             </section>
 
