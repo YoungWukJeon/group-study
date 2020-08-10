@@ -69,8 +69,7 @@ a {
 .title-line-divider {
     width: 70px;
     border-top: 2px solid rgb(214, 171, 127);
-    margin: 0 auto;
-    margin-bottom: 50px;
+    margin: 0 auto 50px;
 }
 
 .cards-wrap {
@@ -115,8 +114,9 @@ a {
     width: 100%;
     position: relative;
     left: 50%;
-    -webkit-transform: translate(-50%, 0);
-    transform: translate(-50%, 0);
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .card-description {
