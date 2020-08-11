@@ -5,6 +5,8 @@ target/
 !**/src/test/**
 demo.log
 LOG_FILE_IS_UNDEFINED
+demo.log.*.*.gz
+
 
 ### STS ###
 .apt_generated

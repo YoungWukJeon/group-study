@@ -1,7 +1,6 @@
 package group.study.demo.common.config;
 
 import group.study.demo.auth.AuthService;
-import group.study.demo.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,8 +14,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private AuthService authService;
     @Autowired
     private PasswordEncoder passwordEncoder;
-    @Autowired
-    private UserService userService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -47,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/login")
                         .usernameParameter("email")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/")
+                        .defaultSuccessUrl("/", false)
             .and()
                 .logout()
                 .logoutSuccessUrl("/");

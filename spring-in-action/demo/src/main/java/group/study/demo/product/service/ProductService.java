@@ -21,6 +21,11 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
+    public ProductResponse getProductByNo(Long no) {
+        // TODO: 2020-08-10 예외처리
+        return productEntityToProductResponse(productRepository.findById(no).orElseThrow());
+    }
+
     private ProductResponse productEntityToProductResponse(ProductEntity productEntity) {
         return new ProductResponse(
                 productEntity.getNo(),

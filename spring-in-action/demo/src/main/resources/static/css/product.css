@@ -1,0 +1,123 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0 !important;
+}
+
+html {
+    min-width: 980px;
+    height: 100%;
+}
+
+button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+h3 {
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.6px;
+    color: #212529;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/** article***/
+
+#content {
+    margin-top: 100px;
+    padding-bottom: 0;
+}
+
+#article-images {
+    position: relative;
+    width: 729px;
+    margin: 0 auto;
+}
+
+.image-wrap {
+    position: relative;
+    width: 677px;
+    margin: 0 auto;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+#article-images img {
+    width: 100%;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#article-description {
+    padding: 32px 0;
+    width: 677px;
+    margin: 5px auto;
+    border-top: 1px solid #e9ecef;
+    border-bottom: 1px solid #e9ecef;
+}
+
+#article-title {
+    margin-top: 0;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: -0.6px;
+    color: rgb(18, 184, 134);
+}
+
+#article-category {
+    margin-top: 4px;
+    font-size: 13px;
+    line-height: 1.46;
+    letter-spacing: -0.6px;
+    color: #868e96;
+}
+
+#article-price {
+    margin-top: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.76;
+    letter-spacing: -0.6px;
+    color: rgb(214, 171, 127);
+}
+
+#article-detail {
+    margin-bottom: 16px;
+    margin-top: 8px;
+}
+
+#article-detail p {
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: -0.6px;
+    margin: 16px 0;
+    word-break: break-all;
+}
+
+#article-counts {
+    font-size: 13px;
+    line-height: 1.46;
+    letter-spacing: -0.6px;
+    color: #868e96;
+}
+
+/** article***/
