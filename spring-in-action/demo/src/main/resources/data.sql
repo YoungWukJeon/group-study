@@ -70,7 +70,7 @@ VALUES ('Porsche 718 Boxster', '차량',
     <a href="https://www.porsche.com/korea/ko/models/718/718-boxster-models/718-boxster/">About more</a>
 </p>
 ',
-896000000, '/images/products/car/boxster.jpg', '2020-03-20 09:17:13', '2020-03-20 09:17:13');
+89600000, '/images/products/car/boxster.jpg', '2020-03-20 09:17:13', '2020-03-20 09:17:13');
 
 INSERT INTO product (name, category, description, price, image, create_date, update_date)
 VALUES ('스프링 인 액션 : 스프링 5의 강력한 기능과 생산성을 활용한 웹 애플리케이션 개발[5판]', '도서',

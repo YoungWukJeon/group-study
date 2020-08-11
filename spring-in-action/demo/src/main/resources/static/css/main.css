@@ -120,8 +120,7 @@ a {
 }
 
 .card-description {
-    padding: 16px;
-    padding-bottom: 0;
+    padding: 16px 16px 0;
 }
 
 .card-title {
@@ -188,12 +187,6 @@ a {
     box-shadow: none;
 }
 
-.select-category {
-    color: rgb(18, 184, 134);
-    background-color: #FBFBFD;
-    border-color: rgb(18, 184, 134);
-}
-
 .btn {
     font-weight: 700;
     -webkit-font-smoothing: antialiased;
@@ -209,4 +202,10 @@ a {
     font-size: 1rem;
     line-height: 1.5;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.select-category {
+    color: rgb(18, 184, 134);
+    /*background-color: #FBFBFD;*/
+    border: 1.5px solid rgb(18, 184, 134);
 }
