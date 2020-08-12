@@ -25,7 +25,7 @@ public class DesignTacoController {
         this.tacoRepo = tacoRepo;
     }
 
-    @GetMapping("/recent")
+    @GetMapping("/recents")
     public Iterable<Taco> recentTacos() {   // 최근 생성된 타코 디자인들을 가져와서 반환한다.
         PageRequest page = PageRequest.of(0, 12, Sort.by("createdAt").descending());
         return tacoRepo.findAll(page).getContent();

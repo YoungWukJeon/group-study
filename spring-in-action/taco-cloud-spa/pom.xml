@@ -6,7 +6,7 @@
 
     <groupId>sia</groupId>
     <artifactId>taco-cloud-parent</artifactId>
-    <version>0.0.6-SNAPSHOT</version>
+    <version>0.0.7-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <parent>
@@ -30,5 +30,6 @@
         <module>tacocloud-domain</module>
         <module>tacocloud-data</module>
         <module>tacocloud-api</module>
+        <module>tacocloud-restclient</module>
     </modules>
 </project>
