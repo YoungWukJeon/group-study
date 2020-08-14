@@ -1,5 +1,7 @@
 - 비동기(asynchronous) 메시징은 애플리케이션 간에 응답을 기다리지 않고 간접적으로 메시지를 전송하는 방법이다.
 - 따라서 통신하는 애플리케이션 간의 결합도를 낮추고 확장성을 높여준다.
+- 이 경우 스프링이 제공하는 다음의 비동기 메시징을 고려할 수 있다.
+- 바로 JMS(Java Message Service), RabbitMQ, AMQP(Advanced Message Queueing Protocol), 아파치 카프카(Apache Kafka)다.
 
 # JMS로 메시지 전송하기
 
