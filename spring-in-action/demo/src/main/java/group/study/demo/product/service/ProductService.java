@@ -2,8 +2,11 @@ package group.study.demo.product.service;
 
 import group.study.demo.persistence.entity.ProductEntity;
 import group.study.demo.persistence.repository.ProductRepository;
+import group.study.demo.product.model.request.ProductSearchRequest;
 import group.study.demo.product.model.response.ProductResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +17,10 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public List<ProductResponse> getAllProducts() {
-        return productRepository.findAll()
+    public List<ProductResponse> getAllProducts(ProductSearchRequest productSearchRequest) {
+        Pageable pageable = PageRequest.of(productSearchRequest.getPageNum(), productSearchRequest.getPageSize());
+
+        return productRepository.findAll(pageable)
                 .stream()
                 .map(this::productEntityToProductResponse)
                 .collect(Collectors.toList());

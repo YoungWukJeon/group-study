@@ -27,9 +27,9 @@ public class MainController {
 
         model.addAttribute("user", user);
         // TODO: 2020-08-08 메모리 기반 DB등을 사용해서 인기 상품 목록 불러오기
-        model.addAttribute("popularProducts", productService.getAllProducts());
+//        model.addAttribute("popularProducts", productService.getAllProducts());
         // TODO: 2020-08-08 카테고리별로 상품 목록을 가져오도록 Service 변경
-        model.addAttribute("categorizedProducts", productService.getAllProducts());
+//        model.addAttribute("categorizedProducts", productService.getAllProducts());
 
         Set<String> selectedCategories = category == null?
                 Collections.emptySet():

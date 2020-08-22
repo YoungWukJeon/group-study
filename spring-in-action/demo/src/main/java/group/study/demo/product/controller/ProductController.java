@@ -24,4 +24,6 @@ public class ProductController {
         model.addAttribute("product", productService.getProductByNo(no));
         return "product";
     }
+
+
 }
