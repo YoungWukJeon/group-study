@@ -9,11 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>tacocloud-kitchen</artifactId>
+    <artifactId>tacocloud-email</artifactId>
     <packaging>jar</packaging>
 
-    <name>tacocloud-kitchen</name>
-    <description>Taco Cloud Kitchen</description>
+    <name>tacocloud-email</name>
+    <description>Taco Cloud Email Integration</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,23 +25,27 @@
         <!-- Necessary Boot starters -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-artemis</artifactId>
+            <artifactId>spring-boot-starter-integration</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-mail</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <!-- Misc dependencies -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.2</version>
         </dependency>
 
         <!-- Lombok -->
@@ -57,22 +61,5 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <!-- Dev Tools -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>
