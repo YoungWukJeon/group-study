@@ -245,7 +245,7 @@ public IntegrationFlow fileWriterFlow() {
 ![chapter09-02](image/chapter09-02.png '메시지 채널은 통합 플로우의 서로 다른 컴포넌트 간에 데이터를 전달하는 통로다.')
 
 - 스프링 통합은 다음을 포함해서 여러 채널 구현체(클래스)를 제공한다.
-    - PublishSubscribeChannel : 이것으로 전송되는 메시지는 하나 이상의 커슈머(메시지를 소비하는(읽는) 컴포넌트나 애플리케이션)로 전달된다. 컨슈머가 여럿일 때는 모든 컨슈머가 해당 메시지를 수신한다.
+    - PublishSubscribeChannel : 이것으로 전송되는 메시지는 하나 이상의 컨슈머(메시지를 소비하는(읽는) 컴포넌트나 애플리케이션)로 전달된다. 컨슈머가 여럿일 때는 모든 컨슈머가 해당 메시지를 수신한다.
     - QueueChannel : 이것으로 전송되는 메시지는 FIFO(first in first out, 선입선출) 방식으로 컨슈머가 가져갈 때까지 큐에 저장한다. 컨슈머가 여럿일 때는 그중 하나의 컨슈머만 해당 메시지를 수신한다.
     - PriorityChannel : QueueChannel과 유사하지만, FIFO 방식 대신 메시지의 priority 헤더를 기반으로 컨슈머가 메시지를 가져간다.
     - RendezvousChannel : QueueChannel과 유사하지만, 컨슈머가 메시지를 수신할 때까지 메시지 전송자가 채널을 차단한다는 것이 다르다.
@@ -579,7 +579,7 @@ public IntegrationFlow someFlow() {
 
 - 메시지 참조 또는 MessageHandler 인터페이스를 구현하는 클래스 인스턴스까지도 handle() 메서드의 인자로 제공할 수 있다.
 - 단, 람다나 메서드 참조의 경우는 메시지를 매개변수로 받는다는 것을 알아두자.
-- 만일 서비스 액티베이터를 플로우의 제일 끝에 뒤 않았다면 MessageHandler의 경우와 유사하게 handle() 메서드에서 GenericHandler를 인자로 받을 수도 있다.
+- 만일 서비스 액티베이터를 플로우의 제일 끝에 두지 않는다면 MessageHandler의 경우와 유사하게 handle() 메서드에서 GenericHandler를 인자로 받을 수도 있다.
 
 ```java
 public IntegrationFlow orderFlow(OrderRepository orderRepo) {
@@ -621,7 +621,7 @@ public interface UpperCaseGateWay {
 ```
 
 - 놀라운 사실은 이 인터페이스를 구현할 필요가 없다는 것이다.
-- 지정된 채널을 통해 데이터를 전송하고 수신하는 구현체를 스피링 통합이 런타임 시에 자동으로 제공하기 때문이다.
+- 지정된 채널을 통해 데이터를 전송하고 수신하는 구현체를 스프링 통합이 런타임 시에 자동으로 제공하기 때문이다.
 - 이것을 자바 DSL 구성으로 나타내면 다음과 같다.
 
 ```java
