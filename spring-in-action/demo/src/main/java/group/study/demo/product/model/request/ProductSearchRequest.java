@@ -11,4 +11,6 @@ public class ProductSearchRequest {
     @Max(value = 10)
     @Min(value = 2)
     private Integer pageSize = 2;
+
+    private String category;
 }
