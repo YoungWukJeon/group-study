@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import tacos.Taco;
 import tacos.data.TacoRepository;
 
@@ -25,19 +27,29 @@ public class DesignTacoController {
         this.tacoRepo = tacoRepo;
     }
 
+//    @GetMapping("/recents")
+//    public Iterable<Taco> recentTacos() {   // 최근 생성된 타코 디자인들을 가져와서 반환한다.
+//        PageRequest page = PageRequest.of(0, 12, Sort.by("createdAt").descending());
+//        return tacoRepo.findAll(page).getContent();
+//    }
+
     @GetMapping("/recents")
-    public Iterable<Taco> recentTacos() {   // 최근 생성된 타코 디자인들을 가져와서 반환한다.
-        PageRequest page = PageRequest.of(0, 12, Sort.by("createdAt").descending());
-        return tacoRepo.findAll(page).getContent();
+    public Flux<Taco> recentTacos() {
+        return tacoRepo.findAll().take(12);
     }
 
+//    @GetMapping("/{id}")
+//    public Taco tacoById(@PathVariable("id") Long id) {
+//        Optional<Taco> optTaco = tacoRepo.findById(id);
+//        if (optTaco.isPresent()) {
+//            return optTaco.get();
+//        }
+//        return null;
+//    }
+
     @GetMapping("/{id}")
-    public Taco tacoById(@PathVariable("id") Long id) {
-        Optional<Taco> optTaco = tacoRepo.findById(id);
-        if (optTaco.isPresent()) {
-            return optTaco.get();
-        }
-        return null;
+    public Mono<Taco> tacoById(@PathVariable("id") Long id) {
+        return tacoRepo.findById(id);
     }
 
 //    @GetMapping("/{id}")
@@ -49,9 +61,15 @@ public class DesignTacoController {
 //        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 //    }
 
+//    @PostMapping(consumes="application/json")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Taco postTaco(@RequestBody Taco taco) {
+//        return tacoRepo.save(taco);
+//    }
+
     @PostMapping(consumes="application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public Taco postTaco(@RequestBody Taco taco) {
-        return tacoRepo.save(taco);
+    public Mono<Taco> postTaco(@RequestBody Mono<Taco> tacoMono) {
+        return tacoRepo.saveAll(tacoMono).next();
     }
 }
