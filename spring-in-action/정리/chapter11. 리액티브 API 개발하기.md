@@ -411,7 +411,7 @@ testClient.get().uri("/design/recent")
     
     | HTTP 메서드 | WebTestClient 메서드 |
     | --- | --- |
-    | GE| .get() |
+    | GET | .get() |
     | POST | .post() |
     | PUT | .put() |
     | PATCH | .patch() |
