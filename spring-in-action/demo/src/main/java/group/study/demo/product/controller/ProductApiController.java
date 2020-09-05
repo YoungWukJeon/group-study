@@ -18,6 +18,11 @@ public class ProductApiController {
 
     @GetMapping
     public List<ProductResponse> getList(ProductSearchRequest productSearchRequest) {
-        return productService.getAllProducts(productSearchRequest);
+        if (productSearchRequest.getCategory() == null) {
+            return productService.getAllProducts(productSearchRequest);
+        }
+
+        return productService.getProductsByCategory(productSearchRequest);
     }
+
 }

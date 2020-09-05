@@ -2,6 +2,7 @@ package group.study.demo.product.service;
 
 import group.study.demo.persistence.entity.ProductEntity;
 import group.study.demo.persistence.repository.ProductRepository;
+import group.study.demo.product.model.Category;
 import group.study.demo.product.model.request.ProductSearchRequest;
 import group.study.demo.product.model.response.ProductResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,6 +27,18 @@ public class ProductService {
                 .map(this::productEntityToProductResponse)
                 .collect(Collectors.toList());
     }
+
+    public List<ProductResponse> getProductsByCategory(ProductSearchRequest productSearchRequest) {
+        Pageable pageable = PageRequest.of(productSearchRequest.getPageNum(), productSearchRequest.getPageSize());
+
+        Category category = Category.findByCategory(productSearchRequest.getCategory());
+
+        return productRepository.findAllByCategory(category.getName(), pageable)
+                .stream()
+                .map(this::productEntityToProductResponse)
+                .collect(Collectors.toList());
+    }
+
 
     public ProductResponse getProductByNo(Long no) {
         // TODO: 2020-08-10 예외처리

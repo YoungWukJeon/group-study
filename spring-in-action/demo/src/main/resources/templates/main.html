@@ -42,32 +42,33 @@
             <!-- 카테고리 -->
             <div class="categories-group">
                 <a class="btn btn-category" th:href="@{/main}" th:classappend="${#sets.isEmpty(selectedCategories)}? 'select-category'">전체</a>&nbsp;
-                <a class="btn btn-category" th:href="@{/main(category=food)}" th:classappend="${#sets.contains(selectedCategories, 'food')}? 'select-category'">식품</a>&nbsp;
+                <a class="btn btn-category" th:href="@{/main(category=car)}" th:classappend="${#sets.contains(selectedCategories, 'car')}? 'select-category'">차량</a>
+                <a class="btn btn-category" th:href="@{/main(category=food)}" th:classappend="${#sets.contains(selectedCategories, 'food')}? 'select-category'">식품</a>
                 <a class="btn btn-category" th:href="@{/main(category=book)}" th:classappend="${#sets.contains(selectedCategories, 'book')}? 'select-category'">도서</a>&nbsp;
                 <a class="btn btn-category" th:href="@{/main(category=dress)}" th:classappend="${#sets.contains(selectedCategories, 'dress')}? 'select-category'">옷</a>&nbsp;
                 <a class="btn btn-category" th:href="@{/main(category=etc)}" th:classappend="${#sets.contains(selectedCategories, 'etc')}? 'select-category'">기타</a>
             </div>
 
             <section class="cards-wrap">
-                <article class="card-top" th:each="product : ${categorizedProducts}">
-                    <a class="card-link" th:data-event-label="${product.no}" th:href="@{|/product/${product.no}|}">
-                        <div class="card-image">
-                            <img alt="상품 이미지" th:src="@{${product.image}}">
-                        </div>
+<!--                <article class="card-top" th:each="product : ${categorizedProducts}">-->
+<!--                    <a class="card-link" th:data-event-label="${product.no}" th:href="@{|/product/${product.no}|}">-->
+<!--                        <div class="card-image">-->
+<!--                            <img alt="상품 이미지" th:src="@{${product.image}}">-->
+<!--                        </div>-->
 
-                        <div class="card-description">
-                            <h2 class="card-title" th:text="${product.name}">상품명</h2>
+<!--                        <div class="card-description">-->
+<!--                            <h2 class="card-title" th:text="${product.name}">상품명</h2>-->
 
-                            <div class="card-region-name" th:text="${product.category}">카테고리</div>
+<!--                            <div class="card-region-name" th:text="${product.category}">카테고리</div>-->
 
-                            <div class="card-price" th:text="${#numbers.formatCurrency(product.price)}">0원</div>
+<!--                            <div class="card-price" th:text="${#numbers.formatCurrency(product.price)}">0원</div>-->
 
-                            <div class="card-counts">
-                                <span>관심 4</span>∙<span>채팅 50</span>
-                            </div>
-                        </div>
-                    </a>
-                </article>
+<!--                            <div class="card-counts">-->
+<!--                                <span>관심 4</span>∙<span>채팅 50</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </article>-->
             </section>
         </section>
 
