@@ -2,10 +2,13 @@ package group.study.demo.persistence.repository;
 
 
 import group.study.demo.persistence.entity.UserEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import org.springframework.data.r2dbc.repository.Query;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import reactor.core.publisher.Mono;
 
-public interface UserRepository extends JpaRepository<UserEntity, Long> {
-    Optional<UserEntity> findByEmail(String email);
+
+public interface UserRepository extends ReactiveCrudRepository<UserEntity, Long> {
+    @Query("select * from user where email = :email")
+    Mono<UserEntity> findByEmail(String email);
 }

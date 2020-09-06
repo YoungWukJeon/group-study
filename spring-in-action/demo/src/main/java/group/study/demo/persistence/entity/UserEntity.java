@@ -1,37 +1,39 @@
 package group.study.demo.persistence.entity;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Table(name = "user", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "email")})
-@Entity
+//@Table(name = "user", uniqueConstraints = {
+//        @UniqueConstraint(columnNames = "email")})
+//@Entity
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class UserEntity {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "no")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "no")
     private Long no;
-    @Column(name = "email", unique = true, nullable = false)
+//    @Column(name = "email", unique = true, nullable = false)
     private String email;
-    @Column(name = "password", nullable = false)
+//    @Column(name = "password", nullable = false)
     private String password;
-    @Column(name = "name", nullable = false, length = 20)
+//    @Column(name = "name", nullable = false, length = 20)
     private String name;
-    @Column(name = "create_date")
+//    @Column(name = "create_date")
     private LocalDateTime createDate;
-    @Column(name = "update_date")
+//    @Column(name = "update_date")
     private LocalDateTime updateDate;
-    @Column(name = "last_login_date")
+//    @Column(name = "last_login_date")
     private LocalDateTime lastLoginDate;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_no")
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JoinColumn(name = "user_no")
     private final List<AuthorityEntity> authorityEntityList = new ArrayList<>();
 
     @Builder

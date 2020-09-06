@@ -24,26 +24,28 @@ public class AuthService implements UserDetailsService, ApplicationListener<Auth
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        UserEntity userEntity =
-                userRepository.findByEmail(username)
-                        .orElseThrow(() -> new UsernameNotFoundException("User Not Found"));
+//        UserEntity userEntity =
+//                userRepository.findByEmail(username)
+//                        .orElseThrow(() -> new UsernameNotFoundException("User Not Found"));
+//
+//        List<GrantedAuthority> authorityList = userEntity.getAuthorityEntityList().stream()
+//                .map(authorityEntity -> new SimpleGrantedAuthority(authorityEntity.getRole()))
+//                .collect(Collectors.toList());
+//
+//        return User.withUsername(userEntity.getEmail())
+//                .password(userEntity.getPassword())
+//                .authorities(authorityList)
+//                .build();
 
-        List<GrantedAuthority> authorityList = userEntity.getAuthorityEntityList().stream()
-                .map(authorityEntity -> new SimpleGrantedAuthority(authorityEntity.getRole()))
-                .collect(Collectors.toList());
-
-        return User.withUsername(userEntity.getEmail())
-                .password(userEntity.getPassword())
-                .authorities(authorityList)
-                .build();
+        return null;
     }
 
     @Override
     public void onApplicationEvent(AuthenticationSuccessEvent event) {
-        String username = ((UserDetails) event.getAuthentication().getPrincipal()).getUsername();
-        // TODO: 2020-08-06 예외 처리
-        UserEntity userEntity = userRepository.findByEmail(username).orElseThrow();
-        userEntity.setLastLoginDate(LocalDateTime.now());
-        userRepository.saveAndFlush(userEntity);
+//        String username = ((UserDetails) event.getAuthentication().getPrincipal()).getUsername();
+//        // TODO: 2020-08-06 예외 처리
+//        UserEntity userEntity = userRepository.findByEmail(username).orElseThrow();
+//        userEntity.setLastLoginDate(LocalDateTime.now());
+//        userRepository.saveAndFlush(userEntity);
     }
 }
