@@ -237,7 +237,7 @@ public class RouterFunctionConfig {
     - 그리고 명시적으로 선언되지 않았지만, 요청 처리 람다에서는 ServerRequest를 인자로 받으며, ServerResponse의 ok() 메서드와 이 메서드에서 반환된 BodyBuilder의 body()를 사용해서 ServerResponse를 반환한다.
     - 그리고 실행이 완료되면 HTTP 200(OK) 상태 코드를 갖는 응답과 'Hello World!'를 갖는 몸체 페이로드가 생성된다.
 - 다른 종류의 요청을 처리해야 하더라도 또 다른 @Bean 메서드를 작성할 필요가 없다.
-- 대신에 andRoute()를 호출하여 또 다른 RequestPredicate 객체가 어떤 요청 처리 함수와 연관되즌지만 선언하면 된다.
+- 대신에 andRoute()를 호출하여 또 다른 RequestPredicate 객체가 어떤 요청 처리 함수와 연관되는지만 선언하면 된다.
 
 ```java
 @Bean
@@ -315,7 +315,7 @@ public class DesignTacoControllerTest {
 			testTaco(9L), testTaco(10L),
 			testTaco(11L), testTaco(12L),
 			testTaco(13L), testTaco(14L),
-			testTaco(1L), testTaco(16L)};
+			testTaco(15L), testTaco(16L)};
 		Flux<Taco> tacoFlux = Flux.just(tacos);
 
 		TacoRepository tacoRepo = Mockito.mock(TacoRepository.class);
@@ -325,7 +325,7 @@ public class DesignTacoControllerTest {
 				new DesignTacoController(tacoRepo))
 			.build(); // WebTestClient를 생성한다.
 
-		testClient.get().uri("design/recent")
+		testClient.get().uri("/design/recent")
 			.exchange() // 가장 최근 타코들을 요청한다.
 			.expectStatus().isOk() // 우리가 기대한 응답인지 검사한다.
 			.expectBody()
@@ -486,7 +486,7 @@ public void shouldReturnRecentTacos() throws IOException {
 
 - RestTemplate을 사용해서 타코 클라우드 API의 클라이언트 요청을 하였다.
     - 스프링 3.0 버전에 소개되었던 RestTemplate은 이제 구세대가 되었다.
-    - 그 당시에는 많은 애플리케이션이 무수한 요청에 RestTempalte을 사용했다.
+    - 그 당시에는 많은 애플리케이션이 무수한 요청에 RestTemplate을 사용했다.
     - 그러나 RestTemplate이 제공하는 모든 메서드는 리액티브가 아닌 도메인 타입이나 컬렉션을 처리한다.
 - 따라서 리액티브 방식으로 응답 데이터를 사용하고자 한다면, 이것을 Flux나, Mono 타입으로 래핑해야 한다.
 - 그리고 이미 Flux나 Mono 타입이 있으면서 POST나 PUT 요청으로 전송하고 싶다면, 요청을 하기 전에 Flux나 Mono 데이터를 리액티브가 아닌 타입으로 추출해야 한다.
@@ -679,7 +679,7 @@ ingredientMono.subscribe(
 	});
 ```
 
-- 이 경우 지정된 ID와 일치하는 식자재 리소를 찾으면 subscribe()의 천 번째 인자로 전달된 람다(데이터 컨슈머)가 일치된 Ingredient 객체를 받아 실행된다.
+- 이 경우 지정된 ID와 일치하는 식자재 리소스를 찾으면 subscribe()의 첫 번째 인자로 전달된 람다(데이터 컨슈머)가 일치된 Ingredient 객체를 받아 실행된다.
 - 그러나 만일 못 찾으면 요청 응답이 HTTP 404 (NOT FOUND) 상태 코드를 갖게 되고, 두 번째 인자로 전달된 람다(에러 컨슈머)가 실행되어 기본적으로 WebClientResponseException을 발생시킨다.
 - 그러나 WebClientResponseException은 구체적인 예외를 나타내는 것이 아니므로 Mono에 무엇이 잘되었는지 정확히 알 수 없다.
 - WebClientResponseException이라는 이름에서 암시하듯, WebClient의 요청 응답에 에러가 생겼다는 것만 알 수 있을 뿐이다.
@@ -754,7 +754,7 @@ Mono<Ingredient> ingredientMono = webClient
     	.uri("http://localhost:8080/ingredients/{id}", ingredientId)
     	.exchange()
     	.flatMap(cr -> {
-    		if (cr.headers().header().contains()) {
+    		if (cr.headers().header("X_UNAVAILABLE").contains("true")) {
     			return Mono.empty();
     		}
     		return Mono.just(cr);
@@ -799,7 +799,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers("/design", "/orders").hasAuthority("USER")
-				.anyMatchers("/**").permitAll();
+				.antMatchers("/**").permitAll();
 	}
 }
 ```
