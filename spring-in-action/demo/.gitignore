@@ -5,6 +5,7 @@ target/
 !**/src/test/**
 demo.log
 LOG_FILE_IS_UNDEFINED
+LOG_FILE_IS_UNDEFINED.*.gz
 demo.log.*.*.gz
 
 

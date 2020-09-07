@@ -12,8 +12,12 @@
             <maxHistory>${LOG_FILE_MAX_HISTORY:-0}</maxHistory>
         </rollingPolicy>
     </appender>
-    <logger name="root" level="INFO" />
+
     <root level="INFO">
         <appender-ref ref="FILE" />
     </root>
+
+    <springProfile name="dev">
+        <logger name="root" level="INFO" />
+    </springProfile>
 </configuration>
