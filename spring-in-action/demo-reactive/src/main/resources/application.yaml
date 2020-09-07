@@ -1,0 +1,42 @@
+spring:
+  h2:
+    console:
+      enabled: true
+
+#  r2dbc:
+#    url: r2dbc:h2:mem:///demo?options=DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+#    name: sa
+
+  datasource:
+    platform: h2
+    driver-class-name: org.h2.Driver
+#    driver: h2
+#    url: r2dbc:h2:mem://./demo?options=DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:demo
+    username: sa
+    sql-script-encoding: UTF-8
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  level:
+    root: INFO
+    org.springframework.security: DEBUG
+  config: classpath:logback-spring.xml
+
+---
+spring:
+  profiles: dev
+
+logging:
+  file:
+    name: demo.log
+  level:
+    root: INFO
+    org.springframework.security: DEBUG
+  config: classpath:logback-dev.xml
+

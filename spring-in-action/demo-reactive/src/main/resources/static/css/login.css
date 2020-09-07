@@ -1,0 +1,214 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0 !important;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+/*****section********/
+
+#login-content {
+    width: 720px;
+    margin: 0 auto;
+}
+
+#logo-bar {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    background-color: white;
+    height: 60px;
+    margin-top: 75px;
+}
+
+#logo-bar-wrap {
+    justify-content: center !important;
+    display: flex !important;
+}
+
+.container {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo {
+    width: 132px;
+}
+
+::selection {
+    color: #fff;
+    background-color: rgb(214, 171, 127);
+}
+
+#registration-form {
+    max-width: 400px;
+}
+
+.form-sign {
+    margin: 40px 0;
+    padding: 16px;
+    border-radius: 16px;
+}
+
+.form-headline {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-control {
+    border-color: #e9ecf3;
+    display: block;
+    width: 100%;
+    height: calc(24px + 12px + 2px);
+    padding: 6px 12px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: white;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: white;
+    border-color: rgb(18, 184, 134);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(18, 184, 134, 0.25);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn {
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    display: block;
+    width: 100%;
+    color: white;
+    text-align: center;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1.5;
+    border-radius: 4px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.login-btn {
+    background-color: rgb(18, 184, 134);
+    border-color: rgb(18, 184, 134);
+}
+
+.login-btn:hover {
+    background-color: rgb(13, 138, 100) !important;
+    border-color: rgb(13, 138, 100) !important;
+}
+
+.login-btn:focus {
+    box-shadow: 0 0 0 3px rgb(23, 230, 168) !important;
+}
+
+.regist-btn {
+    margin-top: 8px;
+    color: rgb(18, 184, 134);
+    border-color: #f8f9fa;
+    background-color: #F7F7FB;
+    text-decoration: none;
+}
+
+.regist-btn:hover {
+    color: rgb(13, 138, 100);
+    background-color: rgb(192, 255, 215) !important;
+    border-color: rgb(192, 255, 215) !important;
+}
+
+/***여기부터 footer*****/
+
+/* footer {
+    padding: 40px 0 67px 0;
+    background-color: #495057;
+    color: #dee2e6;
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: -0.6px;
+    text-align: center;
+    z-index: 100;
+}
+
+#footer-address-list {
+    font-weight: 200;
+}
+
+.footer-list {
+    list-style-type: none;
+    margin: 24px 0;
+}
+
+.footer-list-item {
+    display: inline-block;
+    
+}
+
+.footer-list-item a {
+    text-decoration: none;
+    color: #dee2e6;
+}
+
+.footer-list-item a:hover {
+    text-decoration: underline;
+}
+
+.footer-list-item::after {
+    content: '|';
+    margin: 0 16px;
+    color: #868e96;
+    font-weight: normal;
+}
+
+.footer-list-item:last-child::after {
+    content: none;
+}
+
+#team-member {
+    font-weight: 200;
+}
+
+#copyright {
+    color: #868e96;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.6;
+    letter-spacing: -0.6px;
+    margin: 8px 0;
+} */

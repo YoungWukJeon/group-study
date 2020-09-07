@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko" 
+    xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Demo Market</title>
+        <link rel="icon" type="image/png" sizes="16x16" th:href="@{favicon/favicon-16x16.png}">
+        <link rel="manifest" th:href="@{favicon/site.webmanifest}">
+
+        <link rel="stylesheet" th:href="@{/css/main.css}">
+        <script type="text/javascript" th:src="@{/js/jquery-3.5.1.min.js}"></script>
+        <script type="text/javascript" th:src="@{/js/main.js}"></script>
+    </head>
+
+    <body>
+        <div th:insert="/fragment/header :: html"></div>
+
+        <!-- 검색용 ui
+        <section id="content">
+            <div class="content-container">
+                <div class="articles-wrap">
+                    ㅋㅋㅋ
+                </div>
+            </div>
+        </section> -->
+
+        <section id="popular-products">
+            <h3>인기 상품</h3>
+            
+            <div class="title-line-divider"></div>
+
+            <section class="cards-wrap">
+
+            </section>
+        </section>
+
+        <section id="category-products">
+            <h3>카테고리별 상품</h3>
+            
+            <div class="title-line-divider"></div>
+
+            <!-- 카테고리 -->
+            <div class="categories-group">
+                <a class="btn btn-category" th:href="@{/main}" th:classappend="${#sets.isEmpty(selectedCategories)}? 'select-category'">전체</a>&nbsp;
+                <a class="btn btn-category" th:href="@{/main(category=car)}" th:classappend="${#sets.contains(selectedCategories, 'car')}? 'select-category'">차량</a>
+                <a class="btn btn-category" th:href="@{/main(category=food)}" th:classappend="${#sets.contains(selectedCategories, 'food')}? 'select-category'">식품</a>
+                <a class="btn btn-category" th:href="@{/main(category=book)}" th:classappend="${#sets.contains(selectedCategories, 'book')}? 'select-category'">도서</a>&nbsp;
+                <a class="btn btn-category" th:href="@{/main(category=dress)}" th:classappend="${#sets.contains(selectedCategories, 'dress')}? 'select-category'">옷</a>&nbsp;
+                <a class="btn btn-category" th:href="@{/main(category=etc)}" th:classappend="${#sets.contains(selectedCategories, 'etc')}? 'select-category'">기타</a>
+            </div>
+
+            <section class="cards-wrap">
+<!--                <article class="card-top" th:each="product : ${categorizedProducts}">-->
+<!--                    <a class="card-link" th:data-event-label="${product.no}" th:href="@{|/product/${product.no}|}">-->
+<!--                        <div class="card-image">-->
+<!--                            <img alt="상품 이미지" th:src="@{${product.image}}">-->
+<!--                        </div>-->
+
+<!--                        <div class="card-description">-->
+<!--                            <h2 class="card-title" th:text="${product.name}">상품명</h2>-->
+
+<!--                            <div class="card-region-name" th:text="${product.category}">카테고리</div>-->
+
+<!--                            <div class="card-price" th:text="${#numbers.formatCurrency(product.price)}">0원</div>-->
+
+<!--                            <div class="card-counts">-->
+<!--                                <span>관심 4</span>∙<span>채팅 50</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </article>-->
+            </section>
+        </section>
+
+        <div th:insert="/fragment/footer :: html"></div>
+    </body>
+</html>

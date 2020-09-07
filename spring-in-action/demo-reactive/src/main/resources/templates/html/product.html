@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko" 
+    xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Demo Market</title>
+        <link rel="icon" type="image/png" sizes="16x16" href="../../static/favicon/favicon-16x16.png">
+        <link rel="manifest" href="../../static/favicon/site.webmanifest">
+
+        <link rel="stylesheet" href="../../static/css/product.css">
+
+        <script type="text/javascript" src="../../static/js/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript" src="../../static/js/product.js"></script>
+    </head>
+
+    <body>
+        <header id="fixed-bar" class="fixed-bar-box-shadow">
+            <div id="fixed-bar-wrap">
+                <h1 id="fixed-bar-logo-title"> <!--id에 따른 css 적용x-->
+                    <a href="./main.html">
+                        <img alt="데모마켓" src="../../static/images/logo2.png" class="fixed-logo">
+                    </a>
+                </h1>
+
+                <section id="fixed-bar-search">
+                    <div class="search-input-wrap">
+                        <input type="text" name="header-search-input" id="header-search-input" class="fixed-search-input" placeholder="검색어를 입력하세요.">
+                        <button id="header-search-button">
+                            <img alt="Search" src="../../static/images/icon/search.svg" class="fixed-search-icon">
+                        </button>
+                    </div>
+                </section>
+
+                <section id="fixed-bar-login" style="display: none;">                
+                    <button id="header-login-button" class="header-button">
+                        <a href="./login.html">로그인</a>
+                    </button>
+
+                    <button id="header-regist-button" class="header-button">
+                        <a href="./registration.html">회원가입</a>
+                    </button>
+                </section>
+
+                <section id="fixed-bar-user-area">
+                    <button id="header-write-button" class="header-icon-button">
+                        <img alt="Write" src="../../static/images/icon/write.svg" class="">
+                    </button>
+
+                    <button id="header-cart-button" class="header-icon-button">
+                        <img alt="Cart" src="../../static/images/icon/cart.svg" class="">
+                    </button>
+                    
+                    <button id="header-user-profile-button" class="header-icon-button non-hover">
+                        <img alt="Cart" src="../../static/images/profiles/profile01.jpeg" class="header-user-profile-image">
+                        <img alt="Spread" src="../../static/images/icon/spread.svg" id="header-user-profile-spread">
+                    </button>
+                </section>
+
+                <section id="fixed-bar-user-menu">
+                    <div class="menu-wrapper">
+                        <a href="./main.html">
+                            <div class="menu-item">메뉴1</div>
+                        </a>
+                        
+                        <a href="./main.html">
+                            <div class="menu-item">메뉴2</div>
+                        </a>
+
+                        <a href="./main.html">
+                            <div class="menu-item">로그아웃</div>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </header>
+
+        <article id="content">
+            <section id="article-images">
+                <div class="image-wrap">
+                    <img src="../../static/images/products/car/boxster.jpg">
+                </div>
+            </section>
+
+            <section id="article-description">
+                <h1 id="article-title">삼성 제습기 팝니다.</h1>
+
+                <p id="article-category">
+                    디지털/가전 ∙
+                    <time>4시간 전</time>
+                </p>
+
+                <p id="article-price">150,000원</p>
+
+                <div id="article-detail">
+                    <p>일단 산다는분들 채팅이 너무 많이 와서 한분한분 답변 드리는게 예의인줄 아오나 밤 늦은 시간이라
+                        <br>글 내용 수정하여 남깁니다.
+                        <br>답 못드려도 너그러이 양해 부탁드립니다.
+                        <br>------------------------------------------------------------------
+                    </p>
+                    <p>삼성 제습기 팝니다.
+                        <br>삼성 제습기 마지막 모델로 알고 있어요.
+                    </p>
+                    <p>해당 똑같은 모델도 제습량이 12L, 15L 두가지 있던걸로 기억하는데 이건 15L 모델입니다.</p>
+                </div>
+
+                <p id="article-counts">채팅 19 ∙ 관심 10 ∙ 조회 383</p>
+            </section>
+        </article>
+
+        <footer id="footer">
+            <ul id="footer-address-list" class="footer-list">
+                <li class="footer-list-item">
+                    개발문의 : 
+                    <a href="mailto:dev.kani@kakao.com">dev.kani@kakao.com</a>
+                </li>
+
+                <li class="footer-list-item">
+                    Github Link :
+                    <a href="https://github.com/YoungWukJeon/group-study/tree/master/spring-in-action/demo">link</a>
+                </li>                
+            </ul>
+
+            <p id="team-member">
+                (팀)그룹 스터디 참여자 홍길동, 임꺽정
+            </p>
+
+            <div id="copyright">
+                Copyright ⓣ Group Study. All rights reserved.
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko" 
+    xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Demo Market</title>
+        <link rel="icon" type="image/png" sizes="16x16" href="../../static/favicon/favicon-16x16.png">
+        <link rel="manifest" href="../../static/favicon/site.webmanifest">
+
+        <!-- <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+        <link rel="stylesheet" href="../../static/css/main.css">
+
+        <!-- <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script> -->
+        
+        <script type="text/javascript" src="../../static/js/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript" src="../../static/js/main.js"></script>
+    </head>
+
+    <body>
+        <header id="fixed-bar" class="fixed-bar-box-shadow">
+            <div id="fixed-bar-wrap">
+                <h1 id="fixed-bar-logo-title"> <!--id에 따른 css 적용x-->
+                    <a href="./main.html">
+                        <img alt="데모마켓" src="../../static/images/logo2.png" class="fixed-logo">
+                    </a>
+                </h1>
+
+                <section id="fixed-bar-search">
+                    <div class="search-input-wrap">
+                        <input type="text" name="header-search-input" id="header-search-input" class="fixed-search-input" placeholder="검색어를 입력하세요.">
+                        <button id="header-search-button">
+                            <img alt="Search" src="../../static/images/icon/search.svg" class="fixed-search-icon">
+                        </button>
+                    </div>
+                </section>
+
+                <section id="fixed-bar-login" style="display: none;">                
+                    <button id="header-login-button" class="header-button">
+                        <a href="./login.html">로그인</a>
+                    </button>
+
+                    <button id="header-regist-button" class="header-button">
+                        <a href="./registration.html">회원가입</a>
+                    </button>
+                </section>
+
+                <section id="fixed-bar-user-area">
+                    <button id="header-write-button" class="header-icon-button">
+                        <img alt="Write" src="../../static/images/icon/write.svg" class="">
+                    </button>
+
+                    <button id="header-cart-button" class="header-icon-button">
+                        <img alt="Cart" src="../../static/images/icon/cart.svg" class="">
+                    </button>
+                    
+                    <button id="header-user-profile-button" class="header-icon-button non-hover">
+                        <img alt="Cart" src="../../static/images/profiles/profile01.jpeg" class="header-user-profile-image">
+                        <img alt="Spread" src="../../static/images/icon/spread.svg" id="header-user-profile-spread">
+                    </button>
+                </section>
+
+                <section id="fixed-bar-user-menu">
+                    <div class="menu-wrapper">
+                        <a href="./main.html">
+                            <div class="menu-item">메뉴1</div>
+                        </a>
+                        
+                        <a href="./main.html">
+                            <div class="menu-item">메뉴2</div>
+                        </a>
+
+                        <a href="./main.html">
+                            <div class="menu-item">로그아웃</div>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </header>
+
+        <!-- 검색용 ui
+        <section id="content">
+            <div class="content-container">
+                <div class="articles-wrap">
+                    ㅋㅋㅋ
+                </div>
+            </div>
+        </section> -->
+
+        <section id="popular-products">
+            <h3>인기 상품</h3>
+            
+            <div class="title-line-divider"></div>
+
+            <section class="cards-wrap">
+                <article class="card-top">
+                    <a class="card-link" data-event-label="12345" href="./main.html?product_no=12345">
+                        <div class="card-image">
+                            <img alt="boxster" src="../../static/images/products/etc/boxster.jpg">
+                        </div>
+
+                        <div class="card-description">
+                            <h2 class="card-title">상품명</h2>
+
+                            <div class="card-region-name">
+                                서울 광진구 광장동
+                            </div>
+
+                            <div class="card-price">
+                                10,000원
+                            </div>
+
+                            <div class="card-counts">
+                                <span>관심 4</span>
+                                ∙
+                                <span>채팅 50</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="card-top">
+                    <a class="card-link" data-event-label="12345" href="./main.html?product_no=12345">
+                        <div class="card-image">
+                            <img alt="boxster" src="../../static/images/products/book/book01.jpg">
+                        </div>
+
+                        <div class="card-description">
+                            <h2 class="card-title">상품명</h2>
+
+                            <div class="card-region-name">
+                                서울 광진구 광장동
+                            </div>
+
+                            <div class="card-price">
+                                10,000원
+                            </div>
+
+                            <div class="card-counts">
+                                <span>관심 4</span>
+                                ∙
+                                <span>채팅 50</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="card-top">
+                    <a class="card-link" data-event-label="12345" href="./main.html?product_no=12345">
+                        <div class="card-image">
+                            <img alt="boxster" src="../../static/images/products/dress/dress01.png">
+                        </div>
+
+                        <div class="card-description">
+                            <h2 class="card-title">상품명</h2>
+
+                            <div class="card-region-name">
+                                서울 광진구 광장동
+                            </div>
+
+                            <div class="card-price">
+                                10,000원
+                            </div>
+
+                            <div class="card-counts">
+                                <span>관심 4</span>
+                                ∙
+                                <span>채팅 50</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="card-top">
+                    <a class="card-link" data-event-label="12345" href="./main.html?product_no=12345">
+                        <div class="card-image">
+                            <img alt="boxster" src="../../static/images/products/food/food01.jpeg">
+                        </div>
+
+                        <div class="card-description">
+                            <h2 class="card-title">상품명</h2>
+
+                            <div class="card-region-name">
+                                서울 광진구 광장동
+                            </div>
+
+                            <div class="card-price">
+                                10,000원
+                            </div>
+
+                            <div class="card-counts">
+                                <span>관심 4</span>
+                                ∙
+                                <span>채팅 50</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </section>
+        </section>
+
+        <section id="category-products">
+            <h3>카테고리별 상품</h3>
+            
+            <div class="title-line-divider"></div>
+
+            <!-- 카테고리 -->
+            <div class="categories-group">
+                <a class="btn btn-category" href="./main.html?category=food">
+                    식품
+                </a>&nbsp;
+                <a class="btn btn-category" href="./main.html?category=book">
+                    도서
+                </a>&nbsp;
+                <a class="btn btn-category" href="./main.html?category=dress">
+                    옷
+                </a>&nbsp;
+                <a class="btn btn-category" href="./main.html?category=etc">
+                    기타
+                </a>
+            </div>
+
+            <section class="cards-wrap">
+                <article class="card-top">
+                    <a class="card-link" data-event-label="12345" href="./main.html?product_no=12345">
+                        <div class="card-image">
+                            <img alt="boxster" src="../../static/images/products/etc/boxster.jpg">
+                        </div>
+
+                        <div class="card-description">
+                            <h2 class="card-title">상품명</h2>
+
+                            <div class="card-region-name">
+                                서울 광진구 광장동
+                            </div>
+
+                            <div class="card-price">
+                                10,000원
+                            </div>
+
+                            <div class="card-counts">
+                                <span>관심 4</span>
+                                ∙
+                                <span>채팅 50</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="card-top">
+                    <a class="card-link" data-event-label="12345" href="./main.html?product_no=12345">
+                        <div class="card-image">
+                            <img alt="boxster" src="../../static/images/products/book/book01.jpg">
+                        </div>
+
+                        <div class="card-description">
+                            <h2 class="card-title">상품명</h2>
+
+                            <div class="card-region-name">
+                                서울 광진구 광장동
+                            </div>
+
+                            <div class="card-price">
+                                10,000원
+                            </div>
+
+                            <div class="card-counts">
+                                <span>관심 4</span>
+                                ∙
+                                <span>채팅 50</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="card-top">
+                    <a class="card-link" data-event-label="12345" href="./main.html?product_no=12345">
+                        <div class="card-image">
+                            <img alt="boxster" src="../../static/images/products/dress/dress01.png">
+                        </div>
+
+                        <div class="card-description">
+                            <h2 class="card-title">상품명</h2>
+
+                            <div class="card-region-name">
+                                서울 광진구 광장동
+                            </div>
+
+                            <div class="card-price">
+                                10,000원
+                            </div>
+
+                            <div class="card-counts">
+                                <span>관심 4</span>
+                                ∙
+                                <span>채팅 50</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="card-top">
+                    <a class="card-link" data-event-label="12345" href="./main.html?product_no=12345">
+                        <div class="card-image">
+                            <img alt="boxster" src="../../static/images/products/food/food01.jpeg">
+                        </div>
+
+                        <div class="card-description">
+                            <h2 class="card-title">상품명</h2>
+
+                            <div class="card-region-name">
+                                서울 광진구 광장동
+                            </div>
+
+                            <div class="card-price">
+                                10,000원
+                            </div>
+
+                            <div class="card-counts">
+                                <span>관심 4</span>
+                                ∙
+                                <span>채팅 50</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </section>
+        </section>
+
+        <footer id="footer">
+            <ul id="footer-address-list" class="footer-list">
+                <li class="footer-list-item">
+                    개발문의 : 
+                    <a href="mailto:dev.kani@kakao.com">dev.kani@kakao.com</a>
+                </li>
+
+                <li class="footer-list-item">
+                    Github Link :
+                    <a href="https://github.com/YoungWukJeon/group-study/tree/master/spring-in-action/demo">link</a>
+                </li>                
+            </ul>
+
+            <p id="team-member">
+                (팀)그룹 스터디 참여자 홍길동, 임꺽정
+            </p>
+
+            <div id="copyright">
+                Copyright ⓣ Group Study. All rights reserved.
+            </div>
+        </footer>
+    </body>
+</html>
