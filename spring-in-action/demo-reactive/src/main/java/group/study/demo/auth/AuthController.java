@@ -20,7 +20,7 @@ public class AuthController {
             if (!userRegistrationRequest.getPassword().equals(userRegistrationRequest.getPasswordConfirm())) {
                 return "redirect:/registration";
             }
-            userService.save(userRegistrationRequest);
+//            userService.save(userRegistrationRequest);
             return "redirect:/login";
         } catch (Exception e) {
             e.printStackTrace();

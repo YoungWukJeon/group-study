@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,30 +22,33 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public List<ProductResponse> getAllProducts(ProductSearchRequest productSearchRequest) {
-        Pageable pageable = PageRequest.of(productSearchRequest.getPageNum(), productSearchRequest.getPageSize());
+    public Flux<ProductResponse> getAllProducts(ProductSearchRequest productSearchRequest) {
+//        Pageable pageable = PageRequest.of(productSearchRequest.getPageNum(), productSearchRequest.getPageSize());
+        int skipNum = productSearchRequest.getPageSize() * productSearchRequest.getPageNum();
 
-        return productRepository.findAll(pageable)
-                .stream()
+        return productRepository.findAll()
                 .map(this::productEntityToProductResponse)
-                .collect(Collectors.toList());
+                .buffer(productSearchRequest.getPageSize(), skipNum)
+                .flatMap(Flux::fromIterable)
+                .subscribeOn(Schedulers.parallel());
     }
 
-    public List<ProductResponse> getProductsByCategory(ProductSearchRequest productSearchRequest) {
-        Pageable pageable = PageRequest.of(productSearchRequest.getPageNum(), productSearchRequest.getPageSize());
-
+    public Flux<ProductResponse> getProductsByCategory(ProductSearchRequest productSearchRequest) {
+//        Pageable pageable = PageRequest.of(productSearchRequest.getPageNum(), productSearchRequest.getPageSize());
         Category category = Category.findByCategory(productSearchRequest.getCategory());
+        int skipNum = productSearchRequest.getPageSize() * productSearchRequest.getPageNum();
 
-        return productRepository.findAllByCategory(category.getName(), pageable)
-                .stream()
+        return productRepository.findAllByCategory(category.getName())
                 .map(this::productEntityToProductResponse)
-                .collect(Collectors.toList());
+                .buffer(productSearchRequest.getPageSize(), skipNum)
+                .flatMap(Flux::fromIterable)
+                .subscribeOn(Schedulers.parallel());
     }
 
-
-    public ProductResponse getProductByNo(Long no) {
+    public Mono<ProductResponse> getProductByNo(Long no) {
         // TODO: 2020-08-10 예외처리
-        return productEntityToProductResponse(productRepository.findById(no).orElseThrow());
+        return productRepository.findById(no)
+                .map(this::productEntityToProductResponse);
     }
 
     private ProductResponse productEntityToProductResponse(ProductEntity productEntity) {

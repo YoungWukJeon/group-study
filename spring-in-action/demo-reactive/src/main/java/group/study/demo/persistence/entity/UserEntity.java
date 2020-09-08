@@ -1,44 +1,41 @@
 package group.study.demo.persistence.entity;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.domain.Persistable;
+import org.springframework.data.relational.core.mapping.Table;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "user", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "email")})
-@Entity
-public class UserEntity {
+//@Table("user")
+public class UserEntity implements Persistable<Long> {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "no")
     private Long no;
-
-    @Column(name = "email", unique = true, nullable = false)
     private String email;
-
-    @Column(name = "password", nullable = false)
     private String password;
-
-    @Column(name = "name", nullable = false, length = 20)
     private String name;
-
-    @Column(name = "create_date")
     private LocalDateTime createDate;
-
-    @Column(name = "update_date")
     private LocalDateTime updateDate;
-
-    @Column(name = "last_login_date")
     private LocalDateTime lastLoginDate;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_no")
     private final List<AuthorityEntity> authorityEntities = new ArrayList<>();
+
+    @Transient
+    private boolean newUser;
+
+    @Override
+    public Long getId() {
+        return no;
+    }
+
+    @Override
+    @Transient
+    public boolean isNew() {
+        return this.newUser || no == null;
+    }
 
     @Builder
     public UserEntity(String email, String password, String name, List<AuthorityEntity> authorityEntities,
