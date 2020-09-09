@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-//@Table("user")
+@Table("user")
 public class UserEntity implements Persistable<Long> {
     @Id
     private Long no;

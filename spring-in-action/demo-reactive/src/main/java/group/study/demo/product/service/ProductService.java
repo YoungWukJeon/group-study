@@ -11,11 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Schedulers;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -23,26 +18,26 @@ public class ProductService {
     private ProductRepository productRepository;
 
     public Flux<ProductResponse> getAllProducts(ProductSearchRequest productSearchRequest) {
-//        Pageable pageable = PageRequest.of(productSearchRequest.getPageNum(), productSearchRequest.getPageSize());
-        int skipNum = productSearchRequest.getPageSize() * productSearchRequest.getPageNum();
+        Pageable pageable = PageRequest.of(productSearchRequest.getPageNum(), productSearchRequest.getPageSize());
+//        int skipNum = productSearchRequest.getPageSize() * productSearchRequest.getPageNum();
 
         return productRepository.findAll()
-                .map(this::productEntityToProductResponse)
-                .buffer(productSearchRequest.getPageSize(), skipNum)
-                .flatMap(Flux::fromIterable)
-                .subscribeOn(Schedulers.parallel());
+                .map(this::productEntityToProductResponse);
+//                .buffer(productSearchRequest.getPageSize(), skipNum)
+//                .flatMap(Flux::fromIterable)
+//                .subscribeOn(Schedulers.parallel());
     }
 
     public Flux<ProductResponse> getProductsByCategory(ProductSearchRequest productSearchRequest) {
 //        Pageable pageable = PageRequest.of(productSearchRequest.getPageNum(), productSearchRequest.getPageSize());
         Category category = Category.findByCategory(productSearchRequest.getCategory());
-        int skipNum = productSearchRequest.getPageSize() * productSearchRequest.getPageNum();
+//        int skipNum = productSearchRequest.getPageSize() * productSearchRequest.getPageNum();
 
-        return productRepository.findAllByCategory(category.getName())
-                .map(this::productEntityToProductResponse)
-                .buffer(productSearchRequest.getPageSize(), skipNum)
-                .flatMap(Flux::fromIterable)
-                .subscribeOn(Schedulers.parallel());
+        return productRepository.findByCategory(category.getName())
+                .map(this::productEntityToProductResponse);
+//                .buffer(productSearchRequest.getPageSize(), skipNum)
+//                .flatMap(Flux::fromIterable)
+//                .subscribeOn(Schedulers.parallel());
     }
 
     public Mono<ProductResponse> getProductByNo(Long no) {

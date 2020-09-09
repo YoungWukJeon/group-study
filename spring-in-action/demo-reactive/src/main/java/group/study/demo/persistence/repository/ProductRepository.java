@@ -7,5 +7,5 @@ import reactor.core.publisher.Flux;
 
 public interface ProductRepository extends R2dbcRepository<ProductEntity, Long> {
     @Query("select * from product where category = :category")
-    Flux<ProductEntity> findAllByCategory(String category);
+    Flux<ProductEntity> findByCategory(String category);
 }

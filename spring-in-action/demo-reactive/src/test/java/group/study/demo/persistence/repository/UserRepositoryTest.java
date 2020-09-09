@@ -11,12 +11,13 @@ import reactor.test.StepVerifier;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-// TODO: 2020-09-08 mysql 의존 추가해서 @DataR2dbcTest 해보기랑 data.sql에서 마지막 부분 문제점 확인하기
-@DataR2dbcTest
+// TODO: 2020-09-08 mysql 의존 추가해서 @DataR2dbcTest 해보기
+//@DataR2dbcTest
+@SpringBootTest
 class UserRepositoryTest {
     @Autowired
     private DatabaseClient client;
-//    io.r2dbc.spi.R2dbcBadGrammarException
+
     @Autowired
     private UserRepository userRepository;
 
@@ -34,7 +35,9 @@ class UserRepositoryTest {
     public void testFindByEmail() {
         Mono<UserEntity> userEntityMono = userRepository.findByEmail("zzz@a.com");
 
-        userEntityMono.as(StepVerifier::create).consumeNextWith(p -> assertEquals("zzz@a.com", p.getEmail())).verifyComplete();
+        userEntityMono.as(StepVerifier::create)
+                .consumeNextWith(p -> assertEquals("zzz@a.com", p.getEmail()))
+                .verifyComplete();
 //        userEntityMono.subscribe(System.out::println);
     }
 
