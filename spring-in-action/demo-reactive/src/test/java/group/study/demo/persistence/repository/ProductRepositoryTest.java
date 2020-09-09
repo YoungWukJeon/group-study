@@ -18,7 +18,7 @@ class ProductRepositoryTest {
 
     @Test
     void testFindByCategory() {
-        Flux<ProductEntity> productEntities = productRepository.findByCategory("차량");
+        Flux<ProductEntity> productEntities = productRepository.findAllByCategory("차량");
 
         productEntities.subscribe(System.out::println);
 

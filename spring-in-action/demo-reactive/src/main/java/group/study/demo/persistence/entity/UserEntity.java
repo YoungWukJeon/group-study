@@ -21,7 +21,7 @@ public class UserEntity implements Persistable<Long> {
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
     private LocalDateTime lastLoginDate;
-    private final List<AuthorityEntity> authorityEntities = new ArrayList<>();
+//    private final List<AuthorityEntity> authorityEntities = new ArrayList<>();
 
     @Transient
     private boolean newUser;
@@ -38,7 +38,7 @@ public class UserEntity implements Persistable<Long> {
     }
 
     @Builder
-    public UserEntity(String email, String password, String name, List<AuthorityEntity> authorityEntities,
+    public UserEntity(String email, String password, String name,
                       LocalDateTime createDate, LocalDateTime updateDate, LocalDateTime lastLoginDate){
         this.email = email;
         this.password = password;
@@ -46,6 +46,6 @@ public class UserEntity implements Persistable<Long> {
         this.createDate = createDate;
         this.updateDate = updateDate;
         this.lastLoginDate = lastLoginDate;
-        this.authorityEntities.addAll(authorityEntities);
+//        this.authorityEntities.addAll(authorityEntities);
     }
 }

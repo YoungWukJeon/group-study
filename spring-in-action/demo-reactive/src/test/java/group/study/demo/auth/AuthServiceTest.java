@@ -28,7 +28,7 @@ class AuthServiceTest {
                         .email("zzz@a.com")
                         .password("testpass")
                         .name("test")
-                        .authorityEntities(Collections.emptyList())
+//                        .authorityEntities(Collections.emptyList())
                         .build());
 
 //        Mono<UserDetails> user = authService.findByUsername("zzz@a.com");

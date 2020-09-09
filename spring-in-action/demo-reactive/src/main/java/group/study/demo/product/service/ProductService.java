@@ -33,7 +33,7 @@ public class ProductService {
         Category category = Category.findByCategory(productSearchRequest.getCategory());
 //        int skipNum = productSearchRequest.getPageSize() * productSearchRequest.getPageNum();
 
-        return productRepository.findByCategory(category.getName())
+        return productRepository.findAllByCategory(category.getName())
                 .map(this::productEntityToProductResponse);
 //                .buffer(productSearchRequest.getPageSize(), skipNum)
 //                .flatMap(Flux::fromIterable)

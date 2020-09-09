@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 //import org.springframework.security.core.userdetails.UserDetails;
 //import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
@@ -51,7 +52,7 @@ public class AuthServiceUnitTest {
                         UserEntity.builder()
                                 .email(email)
                                 .password("123")
-                                .authorityEntities(authorityEntities)
+//                                .authorityEntities(authorityEntities)
                                 .build()));
 
         // when
