@@ -29,11 +29,11 @@ public class ProductService {
     }
 
     public Flux<ProductResponse> getProductsByCategory(ProductSearchRequest productSearchRequest) {
-//        Pageable pageable = PageRequest.of(productSearchRequest.getPageNum(), productSearchRequest.getPageSize());
+        Pageable pageable = PageRequest.of(productSearchRequest.getPageNum(), productSearchRequest.getPageSize());
         Category category = Category.findByCategory(productSearchRequest.getCategory());
 //        int skipNum = productSearchRequest.getPageSize() * productSearchRequest.getPageNum();
 
-        return productRepository.findAllByCategory(category.getName())
+        return productRepository.findAllByCategory(category.getName(), pageable)
                 .map(this::productEntityToProductResponse);
 //                .buffer(productSearchRequest.getPageSize(), skipNum)
 //                .flatMap(Flux::fromIterable)

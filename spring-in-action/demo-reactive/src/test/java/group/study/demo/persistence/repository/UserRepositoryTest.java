@@ -2,6 +2,7 @@ package group.study.demo.persistence.repository;
 
 import group.study.demo.common.config.DatabaseSchemaInitializer;
 import group.study.demo.common.config.Transaction;
+import group.study.demo.persistence.entity.UserEntity;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,8 @@ import org.springframework.transaction.reactive.TransactionalOperator;
 import reactor.test.StepVerifier;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -49,14 +52,14 @@ class UserRepositoryTest {
     @Test
     public void testFindByEmail() {
         final String givenEmail = "test@test.com";
-        var insertSpecMono = this.client.insert()
-                .into("user")
-                .value("email", givenEmail)
-                .value("password", "testpass")
-                .value("name", "홍길동")
-                .then();
+        UserEntity userEntity = UserEntity.builder()
+                .email(givenEmail)
+                .password("testpass")
+                .name("홍길동")
+                .build();
+        insertUserEntities(userEntity);
 
-        insertSpecMono.then(userRepository.findByEmail(givenEmail))
+        userRepository.findByEmail(givenEmail)
                 .log()
                 .as(Transaction::withRollback)
                 .as(StepVerifier::create)
@@ -98,6 +101,13 @@ class UserRepositoryTest {
                     assertEquals("testpass", e.getPassword());
                     assertEquals("홍길동", e.getName());
                 })
+                .verifyComplete();
+    }
+
+    private void insertUserEntities(UserEntity... userEntities) {
+        this.userRepository.saveAll(List.of(userEntities))
+                .as(StepVerifier::create)
+                .expectNextCount(userEntities.length)
                 .verifyComplete();
     }
 }

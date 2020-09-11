@@ -8,6 +8,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface UserRepository extends R2dbcRepository<UserEntity, Long> {
-    @Query("select * from user where email = :email")
+//    @Query("select * from user where email = :email")
     Mono<UserEntity> findByEmail(String email);
 }

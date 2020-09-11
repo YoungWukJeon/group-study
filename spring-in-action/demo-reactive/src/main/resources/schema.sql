@@ -1,3 +1,7 @@
+drop table if exists authority;
+drop table if exists user;
+drop table if exists product;
+
 CREATE TABLE user (
     no BIGINT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR UNIQUE NOT NULL,
