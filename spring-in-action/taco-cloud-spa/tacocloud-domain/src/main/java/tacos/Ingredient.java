@@ -5,15 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
 
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor(access= AccessLevel.PRIVATE, force=true)
-@Entity
+@Table("ingredients")
 public class Ingredient {
-    @Id
+    @PrimaryKey
     private final String id;
     private final String name;
     private final Type type;

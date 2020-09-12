@@ -1,34 +1,34 @@
 package tacos;
 
-import lombok.Data;
-import org.springframework.data.rest.core.annotation.RestResource;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import org.springframework.data.cassandra.core.cql.Ordering;
+import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
+import org.springframework.data.cassandra.core.mapping.Column;
+import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
+import org.springframework.data.cassandra.core.mapping.Table;
+import org.springframework.data.rest.core.annotation.RestResource;
+import com.datastax.driver.core.utils.UUIDs;
+import lombok.Data;
 
 @Data
-@Entity
 @RestResource(rel="tacos", path="tacos")
+@Table("tacos")
 public class Taco {
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    @PrimaryKeyColumn(type=PrimaryKeyType.PARTITIONED) // 파티션 키를 정의한다.
+    private UUID id = UUIDs.timeBased();
 
     @NotNull
     @Size(min=5, message="Name must be at least 5 characters long")
     private String name;
 
-    private Date createdAt;
+    @PrimaryKeyColumn(type=PrimaryKeyType.CLUSTERED, ordering=Ordering.DESCENDING) // 클러스터링 키를 정의한다.
+    private Date createdAt = new Date();
 
-    @ManyToMany(targetEntity=Ingredient.class)
     @Size(min=1, message="You must choose at least 1 ingredient")
-    private List<Ingredient> ingredients;
-
-    @PrePersist
-    void createdAt() {
-        this.createdAt = new Date();
-    }
+    @Column("ingredients") // List를 ingredients 열에 매핑한다.
+    private List<IngredientUDT> ingredients;
 }

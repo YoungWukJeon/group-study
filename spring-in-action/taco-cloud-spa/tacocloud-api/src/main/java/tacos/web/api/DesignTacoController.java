@@ -1,6 +1,8 @@
 package tacos.web.api;
 
 import java.util.Optional;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -15,7 +17,7 @@ import tacos.Taco;
 import tacos.data.TacoRepository;
 
 @RestController
-@RequestMapping(path="design", produces="application/json") // /design 경로의 요청 처리
+@RequestMapping(path="/design", produces="application/json") // /design 경로의 요청 처리
 @CrossOrigin(origins="*")   // 서로 다른 도메인 간의 요청을 허용한다.
 public class DesignTacoController {
     private TacoRepository tacoRepo;
@@ -48,7 +50,7 @@ public class DesignTacoController {
 //    }
 
     @GetMapping("/{id}")
-    public Mono<Taco> tacoById(@PathVariable("id") Long id) {
+    public Mono<Taco> tacoById(@PathVariable("id") UUID id) {
         return tacoRepo.findById(id);
     }
 
@@ -69,7 +71,9 @@ public class DesignTacoController {
 
     @PostMapping(consumes="application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Taco> postTaco(@RequestBody Mono<Taco> tacoMono) {
-        return tacoRepo.saveAll(tacoMono).next();
+    public Mono<Taco> postTaco(@RequestBody Taco taco) {
+        return tacoRepo.save(taco);
     }
+
+
 }

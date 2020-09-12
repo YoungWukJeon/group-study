@@ -19,6 +19,10 @@ spring:
     data:
         rest:
             base-path: /api
+        cassandra:
+            keyspace-name: tacocloud
+            schema-action: recreate
+            port: 9042
 
 ---
 spring:
