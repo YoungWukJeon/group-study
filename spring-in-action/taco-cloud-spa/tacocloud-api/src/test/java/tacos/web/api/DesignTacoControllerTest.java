@@ -15,7 +15,6 @@ import tacos.Ingredient.Type;
 import tacos.IngredientUDT;
 import tacos.Taco;
 import tacos.data.TacoRepository;
-import tacos.web.api.DesignTacoController;
 
 public class DesignTacoControllerTest {
     @Test
@@ -58,7 +57,7 @@ public class DesignTacoControllerTest {
         TacoRepository tacoRepo = Mockito.mock(TacoRepository.class); // 테스트 데이터를 설정한다.
         Mono<Taco> unsavedTacoMono = Mono.just(testTaco(null));
         Taco savedTaco = testTaco(null);
-        savedTaco.setId(1L);
+        savedTaco.setId(UUID.randomUUID());
         Mono<Taco> savedTacoMono = Mono.just(savedTaco);
 
         when(tacoRepo.save(any())).thenReturn(savedTacoMono); // 모의 TestRepository
@@ -82,9 +81,9 @@ public class DesignTacoControllerTest {
         taco.setName("Taco " + number);
         List<IngredientUDT> ingredients = new ArrayList<>();
         ingredients.add(
-                new IngredientUDT("INGA", "Ingredient A", Type.WRAP));
+                new IngredientUDT("Ingredient A", Type.WRAP));
         ingredients.add(
-                new IngredientUDT("INGB", "Ingredient B", Type.PROTEIN));
+                new IngredientUDT("Ingredient B", Type.PROTEIN));
         taco.setIngredients(ingredients);
         return taco;
     }

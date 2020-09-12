@@ -11,4 +11,7 @@ import java.util.UUID;
 public interface UserRepository extends ReactiveCassandraRepository<User, UUID> {
     @AllowFiltering
     Mono<User> findByUsername(String username);
+
+    @AllowFiltering
+    Mono<User> findByEmail(String email);
 }

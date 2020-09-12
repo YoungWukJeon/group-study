@@ -4,7 +4,7 @@ services:
     # https://github.com/thelastpickle/docker-cassandra-bootstrap/blob/master/docker-compose.yml
     cassandra:
         image: cassandra
-        container_name: cassandra
+        container_name: cassandra1
         env_file:
             - cassandra.env
         ports:
