@@ -1,9 +1,8 @@
 package group.study.demo.persistence.repository;
 
-import group.study.demo.common.config.DatabaseSchemaInitializer;
+import group.study.demo.common.config.R2dbcH2ConfigTest;
 import group.study.demo.common.config.Transaction;
 import group.study.demo.persistence.entity.UserEntity;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.transaction.reactive.TransactionalOperator;
 import reactor.test.StepVerifier;
 
 import java.lang.reflect.Field;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,16 +25,13 @@ class UserRepositoryTest {
     @Autowired
     private UserRepository userRepository;
 
-    @BeforeAll
-    public static void schemaSetUp() {
-        DatabaseSchemaInitializer.init();
-    }
-
     @BeforeEach
-    public void transactionSetUp() throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
+    public void setUp() throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
         Field field = Class.forName("group.study.demo.common.config.Transaction").getDeclaredField("rxtx");
         field.setAccessible(true);  // private, static field 접근
         field.set(null, rxtx);
+        R2dbcH2ConfigTest r2dbcH2ConfigTest = new R2dbcH2ConfigTest();
+        r2dbcH2ConfigTest.createSchema(client); // 스키마 초기화
     }
 
     @Test
@@ -63,7 +58,7 @@ class UserRepositoryTest {
                 .log()
                 .as(Transaction::withRollback)
                 .as(StepVerifier::create)
-                .consumeNextWith(e -> {
+                .assertNext(e -> {
                     assertNotNull(e.getNo());
                     assertEquals(givenEmail, e.getEmail());
                     assertEquals("testpass", e.getPassword());
@@ -83,7 +78,7 @@ class UserRepositoryTest {
 
     @Test
     void testFindById() {
-        var insertSpecMono = this.client.insert()
+        var insertSpecMono = client.insert()
                 .into("user")
                 .value("no", 2L)
                 .value("email", "test@test.com")

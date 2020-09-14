@@ -19,25 +19,17 @@ public class ProductService {
 
     public Flux<ProductResponse> getAllProducts(ProductSearchRequest productSearchRequest) {
         Pageable pageable = PageRequest.of(productSearchRequest.getPageNum(), productSearchRequest.getPageSize());
-//        int skipNum = productSearchRequest.getPageSize() * productSearchRequest.getPageNum();
 
-        return productRepository.findAll()
+        return productRepository.findAllBy(pageable)
                 .map(this::productEntityToProductResponse);
-//                .buffer(productSearchRequest.getPageSize(), skipNum)
-//                .flatMap(Flux::fromIterable)
-//                .subscribeOn(Schedulers.parallel());
     }
 
     public Flux<ProductResponse> getProductsByCategory(ProductSearchRequest productSearchRequest) {
         Pageable pageable = PageRequest.of(productSearchRequest.getPageNum(), productSearchRequest.getPageSize());
         Category category = Category.findByCategory(productSearchRequest.getCategory());
-//        int skipNum = productSearchRequest.getPageSize() * productSearchRequest.getPageNum();
 
         return productRepository.findAllByCategory(category.getName(), pageable)
                 .map(this::productEntityToProductResponse);
-//                .buffer(productSearchRequest.getPageSize(), skipNum)
-//                .flatMap(Flux::fromIterable)
-//                .subscribeOn(Schedulers.parallel());
     }
 
     public Mono<ProductResponse> getProductByNo(Long no) {

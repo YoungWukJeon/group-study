@@ -8,7 +8,6 @@ import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-@EnableR2dbcRepositories
 public class DemoApplication {
 //	@Bean
 //	public PasswordEncoder passwordEncoder() {
