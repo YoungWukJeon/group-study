@@ -28,7 +28,7 @@ class AuthServiceTest {
                         .email("zzz@a.com")
                         .password("testpass")
                         .name("test")
-                        .authorityEntityList(Collections.emptyList())
+                        .authorityEntities(Collections.emptyList())
                         .build());
 
         UserDetails user = authService.loadUserByUsername("zzz@a.com");

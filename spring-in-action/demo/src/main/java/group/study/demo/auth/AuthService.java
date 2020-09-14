@@ -28,7 +28,7 @@ public class AuthService implements UserDetailsService, ApplicationListener<Auth
                 userRepository.findByEmail(username)
                         .orElseThrow(() -> new UsernameNotFoundException("User Not Found"));
 
-        List<GrantedAuthority> authorityList = userEntity.getAuthorityEntityList().stream()
+        List<GrantedAuthority> authorityList = userEntity.getAuthorityEntities().stream()
                 .map(authorityEntity -> new SimpleGrantedAuthority(authorityEntity.getRole()))
                 .collect(Collectors.toList());
 
@@ -44,6 +44,7 @@ public class AuthService implements UserDetailsService, ApplicationListener<Auth
         // TODO: 2020-08-06 예외 처리
         UserEntity userEntity = userRepository.findByEmail(username).orElseThrow();
         userEntity.setLastLoginDate(LocalDateTime.now());
+//        userRepository.saveAndFlush(userEntity);
         userRepository.saveAndFlush(userEntity);
     }
 }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko" 
+    xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Demo Market</title>
+        <link rel="icon" type="image/png" sizes="16x16" th:href="@{favicon/favicon-16x16.png}">
+        <link rel="manifest" th:href="@{favicon/site.webmanifest}">
+
+        <!-- <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+        <link rel="stylesheet" th:href="@{css/login.css}">
+
+        <!-- <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script> -->
+    </head>
+
+    <body>
+        <div id="login-content">
+            <section id="logo-bar">
+                <div id="logo-bar-wrap" class="container">
+                    <a href="main">
+                        <img alt="데모마켓" th:src="@{images/logo2.png}" class="logo">
+                    </a>
+                </div>
+            </section>
+
+            <section id="registration-form" class="container">
+                <form method=POST th:action="@{/login}" class="form-sign">
+                    <h5 class="form-headline">📦 로그인 💵</h5>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="이메일 입력">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호 입력">
+                    </div>
+
+                    <button class="btn login-btn">로그인 하기</button>
+                    <a href="registration" class="btn regist-btn">계정 만들기</a>
+                </form>
+            </section>
+        </div>
+    </body>
+</html>

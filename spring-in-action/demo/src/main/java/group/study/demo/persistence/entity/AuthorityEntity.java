@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Table(name = "authority")
 @Entity
 @Data
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class AuthorityEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

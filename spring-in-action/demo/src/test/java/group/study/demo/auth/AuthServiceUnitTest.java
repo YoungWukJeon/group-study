@@ -45,7 +45,7 @@ public class AuthServiceUnitTest {
         List<AuthorityEntity> authorityEntityList = List.of(AuthorityEntity.builder().role("ROLE_USER").userNo(1L).build());
         // given
         given(userRepository.findByEmail(email))
-                .willReturn(Optional.of(UserEntity.builder().email(email).password("123").authorityEntityList(authorityEntityList).build()));
+                .willReturn(Optional.of(UserEntity.builder().email(email).password("123").authorityEntities(authorityEntityList).build()));
 
         // when
         UserDetails user = authService.loadUserByUsername(email);

@@ -34,7 +34,7 @@ public class UserService {
                 .email(userRegistrationRequest.getEmail())
                 .password(passwordEncoder.encode(userRegistrationRequest.getPassword()))
                 .name(userRegistrationRequest.getName())
-                .authorityEntityList(Collections.singletonList(authorityEntity))
+                .authorityEntities(Collections.singletonList(authorityEntity))
                 .createDate(now)
                 .updateDate(now)
                 .build();
