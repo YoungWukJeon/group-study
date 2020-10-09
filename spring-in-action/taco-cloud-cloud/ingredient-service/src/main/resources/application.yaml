@@ -5,6 +5,10 @@ spring:
     application:
         name: ingredient-service
 
+    cloud:
+        config:
+            uri: http://localhost:8888
+
 #
 # This sets the location of the Eureka server. The config shown here differs
 # slightly from the config in chapter 13 in that it references a localhost

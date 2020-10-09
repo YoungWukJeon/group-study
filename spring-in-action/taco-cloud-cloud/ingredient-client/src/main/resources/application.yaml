@@ -1,3 +1,7 @@
 spring:
     application:
         name: ingredient-client
+
+    cloud:
+        config:
+          uri: http://localhost:8888
