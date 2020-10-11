@@ -8,6 +8,7 @@ div.content {
     font-size: 16pt;
     color: #003366;
 }
+
 div.header {
     background-color: #76D6FF;
     background: -webkit-gradient(linear, left top, left bottom, from(#76D6FF), to(white));
@@ -26,7 +27,7 @@ div.logo {
     height: 100px;
 }
 
-div.logo   img {
+div.logo img {
     width: 270px;
     height: 192px;
 }
@@ -68,7 +69,7 @@ div.bottombaritems {
     position: absolute;
     left: 300px;
     width: 800px;
-    height:70px;
+    height: 70px;
 }
 
 div.bottombaritem {
@@ -99,6 +100,7 @@ div.bottombaritem {
     text-decoration: none;
     color: inherit;
 }
+
 div.footer {
     background-color: #76D6FF;
     background: -webkit-gradient(linear, left top, left bottom, from(white), to(#76D6FF));
@@ -120,7 +122,7 @@ a {
 }
 
 div.cloudtitle {
-    height:95px;
+    height: 95px;
     width: 100%;
     text-align: right;
     background-image: url('/images/Cloud_sm.png');

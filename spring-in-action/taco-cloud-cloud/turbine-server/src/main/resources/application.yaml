@@ -1,0 +1,7 @@
+server:
+    port: 8989
+
+turbine:
+    app-config: ingredient-service, ingredient-client
+    #  app-config: ingredient-service, taco-service, order-service, user-service
+    cluster-name-expression: "'default'"
