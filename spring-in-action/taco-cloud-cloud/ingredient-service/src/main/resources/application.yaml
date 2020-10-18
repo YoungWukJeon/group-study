@@ -21,4 +21,16 @@ management:
     endpoints:
         web:
             exposure:
-                include: hystrix.stream
+                include: '*'
+                exclude: threaddump, heapdump
+    endpoint:
+        health:
+            show-details: always
+    info:
+        git:
+            mode: full
+
+info:
+    contact:
+        email: support@tacocloud.com
+        phone: 822-625-6831
