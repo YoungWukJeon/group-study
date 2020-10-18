@@ -377,7 +377,7 @@ $ curl localhost:8081/actuator/env | jq
 }
 ```
 
-- application.yml 팡리을 참조하는 applicationConfig 속성 근원의 경우에는 각 속성의 origin 필드에서 해당 속성이 설정된 위치(application.yml 파일 내부의 행과 열 번호)를 정확하게 알려준다.
+- application.yml 파일을 참조하는 applicationConfig 속성 근원의 경우에는 각 속성의 origin 필드에서 해당 속성이 설정된 위치(application.yml 파일 내부의 행과 열 번호)를 정확하게 알려준다.
 - /env 엔드포인트는 특정 속성을 가져오는 데도 사용할 수 있으며, 이때는 해당 속성의 이름을 /env 엔드포인트 경로의 두 번째 요소로 지정하면 된다.
 
 ```bash
