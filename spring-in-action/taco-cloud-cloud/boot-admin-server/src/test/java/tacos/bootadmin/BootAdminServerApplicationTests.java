@@ -1,10 +1,10 @@
-package sia5.turbineserver;
+package tacos.bootadmin;
 
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class TurbineServerApplicationTests {
+public class BootAdminServerApplicationTests {
 
 	@Test
 	public void contextLoads() {

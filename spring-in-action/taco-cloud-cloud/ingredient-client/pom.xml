@@ -10,7 +10,7 @@
     </parent>
     <groupId>sia5</groupId>
     <artifactId>ingredient-client</artifactId>
-    <version>0.0.15-SNAPSHOT</version>
+    <version>0.0.17-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>ingredient-client</name>
