@@ -268,9 +268,12 @@ server:
 - [http://localhost:7979/hystrix](http://localhost:7979/hystrix) 에 접속하면 다음과 같이 Hystrix 대시보드 홈페이지가 나타날 것이다.
 - Delay는 폴링 간격 시간을 나타내며, 기본값은 2초이다.
 - 즉, hystrix.stream 엔드포인트로부터 2초에 한 번씩 Hystrix 스트림을 받는다는 의미다.
-- Title은 모니터 페이지의 제목로 나타난다.
-- 그림
-- 그림
+- Title은 모니터 페이지의 제목으로 나타난다.
+
+![chapter15-03](image/chapter15-03.png 'Hystrix 스트림 모니터에서는 애플리케이션에 있는 각 서킷 브레이커의 메트릭을 보여준다.')
+
+![chapter15-04](image/chapter15-04.png '각 서킷 브레이커 모니터는 해당 서킷 브레이커의 현재 상태에 관련된 유용한 정보를 제공한다.')
+
 - 모니터에서 가장 주목할 만한 부분은 왼쪽 위 모서리의  그래프다.
 - 선 그래프는 지정된 메서드의 지난 2분 동안의 트래픽을 나타내며, 메서드가 얼마나 바쁘게 실행되었는지 간략하게 보여준다.
 - 그래프의 배경에는 크기와 색상이 수시로 변동괴는 원이 있다.
@@ -290,7 +293,9 @@ server:
 - Hystrix는 각 의존성 모듈의 스레드 풀을 할당한다.
 - 그리고 Hystrix 명령 메서드 중 하나가 호출될 때 이 메서드는 Hystrix가 관리하는 스레드 풀의 스레드(호출 스레드와 분리된)에서 실행된다.
 - 따라서 이 메서드가 너무 오래 걸린다면 호출 스레드는 해당 호출을 포기하고 벗어날 수 있으므로 잠재적인 스레드 포화를 Hystrix가 관리하는 스레드 풀에 고립시킬 수 있다.
-- 그림
+
+![chapter15-05](image/chapter15-05.png '스레드 풀 모니터는 Hystrix가 관리하는 각 스레드 풀에 관한 중요한 통계 데이터를 보여준다.')
+
 - 서킷 브레이커 모니터와 흡사하게, 각 스레드 풀 모니터에는 왼쪽 위 모서리에 원이 있다.
 - 이 원의 크기와 색상은 해당 스레드 풀이 현재 얼마나 활성적인지와 건강 상태를 나타낸다.
 - 스레드 풀 모니터의 왼쪽 아래 모서리는 다음 정보들을 보여준다.
@@ -356,15 +361,23 @@ turbine:
 - 이 클러스터 이름을 설정하는 것은 중요하다.
 - 만일 설정하지 않으면, 지정된 애플리케이션(마이크로서비스)들로부터 종합될 어떤 스트림 데이터도 Turbine 스트림에 포함되지 않기 때문이다.
 - Turbine 서버 애플리케이션을 빌드하고 실행한 후에 Hystrix 대시보드 홈페이지에서 [http://localhost:8989/turbine.stream](http://localhost:8989/turbine.stream) 을 텍스트 상자에 입력하고(Delay와 Title은 각자 알아서 설정한다.) Monitor Stream 버튼을 클릭하면 Hystrix 스트림 모니터 페이지가 나타난다.
-- 그림
+
+![chapter15-06](image/chapter15-06.png '집계된 Turbine 스트림을 지정하면 Hystrix 대시보드가 모든 서비스의 모든 서킷 브레이커를 보여준다.')
 
 # Hystrix와 Turbine을 사용한 식자재 클라이언트 서비스 빌드 및 실행하기
 
 - 우선, 웹 브라우저에서 [http://localhost:7979/hystrix](http://localhost:7979/hystrix) 에 접속하면 Hystrix 대시보드 홈페이지가 나타난다.
-- 그림
+
+![chapter15-07](image/chapter15-07.png 'Hystrix 대시보드 홈페이지')
+
+![chapter15-08](image/chapter15-08.png 'Hystrix 스트림 모니터 페이지')
+
 - 식자재 서비스 클라이언트를 사용하기 위해 웹 브라우저에서 새로운 창을 열고 [http://localhost:8080/ingredients](http://localhost:8080/ingredients) 에 접속하면 식자재 내역을 보여주는 페이지가 나타난다.
-- 그림
+
+![chapter15-09](image/chapter15-09.png '식자재 내역 페이지')
+
 - 새로고침 키(F5)를 여러 번 눌러서 서킷 브레이커가 설정된 getAllIngredients() 메서드가 여러 번 호출되게 한다.
 - 그리고 가급적 빨리 웹 브라우저의 Hystrix 스트림 모니터 페이지 창으로 전환한다.
 - 그러면 getAllIngredients() 메서드의 호출 횟수가 나타난다.
-- 그림
+
+![chapter15-10](image/chapter15-10.png 'getAllIngredients() 메서드 호출 후의 Hystrix 스트림 모니터 페이지')
