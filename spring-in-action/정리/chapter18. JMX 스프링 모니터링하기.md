@@ -40,7 +40,7 @@ management:
 
 ![chapter18-03](image/chapter18-03.png 'JConsole이 보여주는 /loggers 엔드포인트 MBean의 로깅 레벨')
 
-# 18.2 우리의 MBeans 생성하기
+# 우리의 MBeans 생성하기
 
 - 스프링은 우리가 원하는 어떤 빈(bean)도 JMX MBeans로 쉽게 노출한다.
 - 따라서 빈 클래스에 @ManagedResource 애노테이션을 지정하고 메서드에는 @ManagedOperation을, 속성에는 @ManagedAttribute만 지정하면 된다.
