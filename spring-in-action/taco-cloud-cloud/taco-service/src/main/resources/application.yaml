@@ -4,6 +4,14 @@ server:
 spring:
     application:
         name: taco-service
+    boot:
+        admin:
+            client:
+                url: http://localhost:9090
+                instance:
+                    metadata:
+                        user.name: admin
+                        user.password: password
 
     cloud:
         config:
