@@ -32,7 +32,7 @@ management:
 
 - JConsole에서 액추에이터 MBeans 중 하나의 관리용 오페레이션(managed operation)을 호출할 때는 왼쪽 패널 트리의 해당 엔드포인트 MBeans를 확장한 후 Operations 아래의 원하는 오퍼레이션을 선택하면 된다.
 - 예를 들어, tacos.ingredients 패키지의 로깅 레벨을 조사하고 싶다면 Loggers MBeans을 확장하고 **loggerLevels** 오퍼레이션을 클릭한다.
-- 그리고 오른쪽 위의 Name 필드에 패키지 이름(tacos.ingredients)을 입려갛고 **loggerLevels** 버튼을 클릭한다.
+- 그리고 오른쪽 위의 Name 필드에 패키지 이름(tacos.ingredients)을 입력하고 **loggerLevels** 버튼을 클릭한다.
 
 ![chapter18-02](image/chapter18-02.png 'JConsole을 사용해서 스프링 부트 애플리케이션의 로깅 레벨 보기')
 
